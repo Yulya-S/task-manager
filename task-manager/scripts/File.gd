@@ -162,6 +162,8 @@ func _standard_language() -> Dictionary: return {
 	"Apply": "Сохранить", "Close": "Отменить изменения",
 	# Окно подтверждения
 	"_ConfirmationDialog": {"cancel": "Нет", "ok": "Да"}, "__sure": "Вы уверены?",
+	# Общие фрагменты для фильтра сортировки (По id, по алфавиту)
+	"__FO1": "По дате добавления", "__FO2": "По алфавиту",
 	# Подсказки
 	"_Hints": [],
 	# Ошибки
@@ -193,6 +195,8 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	"Apply": "Save", "Close": "Cancel changes",
 	# Окно подтверждения
 	"_ConfirmationDialog": {"cancel": "No", "ok": "Yes"}, "__sure": "Are you sure?",
+	# Общие фрагменты для фильтра сортировки (По id, по алфавиту)
+	"__FO1": "By date added", "__FO2": "Alphabetically",
 	# Подсказки
 	"_Hints": [],
 	# Ошибки
