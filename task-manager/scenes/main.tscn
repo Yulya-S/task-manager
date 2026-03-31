@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b174d777gpae4"]
+[gd_scene load_steps=3 format=3 uid="uid://b174d777gpae4"]
 
 [ext_resource type="Script" uid="uid://cru48avwsgk0m" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://blmw1fnuokcit" path="res://scenes/pages/registration.tscn" id="2_0wfyh"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
+
+[node name="Registration" parent="." instance=ExtResource("2_0wfyh")]
