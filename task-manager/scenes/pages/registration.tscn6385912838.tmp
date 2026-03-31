@@ -156,13 +156,13 @@ offset_top = 615.0
 offset_right = 1142.0
 offset_bottom = 638.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "task-manager - 1.0"
+text = "budgeting - 1.0"
 text_overrun_behavior = 3
 
 [connection signal="button_down" from="Hints" to="." method="_on_hints_button_down"]
 [connection signal="item_selected" from="Language" to="." method="_on_language_item_selected"]
-[connection signal="text_changed" from="Login" to="." method="_on_text_changed" binds= [0]]
-[connection signal="text_changed" from="Password" to="." method="_on_text_changed" binds= [1]]
-[connection signal="toggled" from="Password/Show" to="." method="_on_show_toggled"]
+[connection signal="text_changed" from="Login" to="." method="_on_login_text_changed" binds= [NodePath("Label")]]
+[connection signal="text_changed" from="Password" to="." method="_on_password_text_changed"]
+[connection signal="toggled" from="Password/Show" to="." method="_on_show_password_toggled"]
 [connection signal="button_down" from="Registration" to="." method="_on_registration_button_down"]
 [connection signal="button_down" from="Enter" to="." method="_on_enter_button_down"]
