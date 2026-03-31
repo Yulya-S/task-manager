@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://co8r6wwdhrmh2"]
+[gd_scene load_steps=2 format=3 uid="uid://co8r6wwdhrmh2"]
+
+[ext_resource type="Script" uid="uid://bgym5mwfp1k5d" path="res://scripts/pages/settings.gd" id="1_dqp6w"]
 
 [node name="Settings" type="ColorRect"]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.670588, 0.733333, 0.72549, 1)
+script = ExtResource("1_dqp6w")
 
 [node name="Setting" type="Label" parent="."]
 layout_mode = 0
@@ -222,23 +225,6 @@ alignment = 2
 text_overrun_behavior = 3
 clip_text = true
 
-[node name="Event_Page_Calendar" type="CheckButton" parent="."]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 51.0
-offset_right = 505.0
-offset_bottom = 82.0
-theme_override_colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.364706, 0.364706, 0.364706, 1)
-theme_override_colors/font_hover_color = Color(0.364706, 0.364706, 0.364706, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-text = "Календарь событий"
-alignment = 2
-text_overrun_behavior = 3
-clip_text = true
-
 [node name="Example" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 65.0
@@ -429,7 +415,6 @@ cancel_button_text = "Нет"
 [connection signal="color_changed" from="Colors/Color_3" to="." method="_on_color_3_changed"]
 [connection signal="color_changed" from="Colors/Color_4" to="." method="_on_color_4_changed"]
 [connection signal="toggled" from="Dark_Theme" to="." method="_on_dark_theme_toggled"]
-[connection signal="toggled" from="Event_Page_Calendar" to="." method="_on_event_page_calendar_toggled"]
 [connection signal="button_down" from="DeleteUser" to="." method="_on_delete_button_down"]
 [connection signal="button_down" from="Apply" to="." method="_on_apply_button_down"]
 [connection signal="button_down" from="Close" to="." method="_on_close_button_down"]

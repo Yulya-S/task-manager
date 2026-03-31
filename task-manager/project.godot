@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="task manager"
-run/main_scene="uid://blmw1fnuokcit"
+run/main_scene="uid://b174d777gpae4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

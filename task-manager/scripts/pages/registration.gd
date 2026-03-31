@@ -7,6 +7,9 @@ extends Control
 # Заполнение списка языков программы
 func _ready() -> void: File.load_lang(Language)
 
+# Автоматический вход
+func _process(_delta: float) -> void: if File.config.enter: _on_enter_button_down(false, true)
+
 # Обработка смены языка приложения
 func _on_language_item_selected(_index: int) -> void: File.read_lang(Language)
 
@@ -38,7 +41,7 @@ func _entrance(auto: bool = false) -> void:
 	var data: Dictionary = DB.select_user()
 	DB.connection_db(File.show_data(data.base))
 	ColorScheme.color_reading()
-	Global.open_new_page(DB.Tables.TASKS)
+	Global.open_new_page(Global.Pages.SETTINGS)
 
 # Генерация названия базы данных
 func _generate_db_name() -> String:
@@ -64,4 +67,4 @@ func _on_enter_button_down(check_field: bool = true, auto: bool = false) -> void
 	_entrance(auto)
 
 # Подсказки
-func _on_hints_button_down() -> void: Global.open_window(DB.Tables.HINTS, null, Global.Dirs.PAGES)
+func _on_hints_button_down() -> void: Global.open_w(Global.Pages.HINTS, null, Global.Dirs.PAGES)

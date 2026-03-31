@@ -188,6 +188,18 @@ func _standard_language() -> Dictionary: return {
 	# Регистрация
 	"Registration": "Регистрация", "Enter": "Вход", "LanguageLabel": "Язык:", "LoginLabel": "Логин:",
 	"PasswordLabel": "Пароль:", "Remember": "Запомни меня", "Show": "Показать пароль",
+	# Настройки
+	"DeleteUser": "Удалить пользователя", "ColorSchemePreLabel": "Цветовое оформление",
+	"ColorSchemeCusLabel": "Количество цветов", "TestButton": "Пример кнопки", "ColorsColor": "Цвет",
+	"TestLabel": "Пример текста", "Dark_Theme": ["Светлая тема", "Тёмная тема"],
+	"Color_Preset": ["Предустановленная тема", "Пользовательская тема"],
+	"ColorSchemePre": ["Стандартный", "Серый", "Лимон со смородиной", "Ржавый металл", "Лиса на поляне", "Ягода на ветке", "Ежевика", "Пингвин"],
+	"ColorSchemeCus": ["Моно", "Контраст", "Триада", "Тетрада"],
+	"SettingsConfirmationDialog": {"text": "Все данные пользователя будут удалены", "title": "Удаление пользователя"},
+	# Окна создания / изменения
+	"Apply": "Сохранить", "Close": "Отменить изменения",
+	# Окно подтверждения
+	"_ConfirmationDialog": {"cancel": "Нет", "ok": "Да"}, "__sure": "Вы уверены?",
 	# Подсказки
 	"_Hints": [],
 	# Ошибки
@@ -207,6 +219,18 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	# Регистрация
 	"Registration": "Registration", "Enter": "Entry", "LanguageLabel": "Language:", "LoginLabel": "Login:",
 	"PasswordLabel": "Password:", "Remember": "Remember me", "Show": "Show password",
+	# Настройки
+	"DeleteUser": "Delete user", "ColorSchemePreLabel": "Color design", "ColorsColor": "Color",
+	"ColorSchemeCusLabel": "Number of colors", "TestButton": "Button example",
+	"TestLabel": "Example text", "Dark_Theme": ["Light theme", "Dark theme"],
+	"Color_Preset": ["Pre-installed theme", "Custom Theme"],
+	"ColorSchemePre": ["Standard", "Grey", "Lemon with currants", "Rusty metal", "A fox in a clearing", "Berry on a branch", "Blackberry", "Penguin"],
+	"ColorSchemeCus": ["Mono", "Contrast", "Triad", "Tetrad"],
+	"SettingsConfirmationDialog": {"text": "All user data will be deleted", "title": "Deleting a user"},
+	# Окна создания / изменения
+	"Apply": "Save", "Close": "Cancel changes",
+	# Окно подтверждения
+	"_ConfirmationDialog": {"cancel": "No", "ok": "Yes"}, "__sure": "Are you sure?",
 	# Подсказки
 	"_Hints": [],
 	# Ошибки

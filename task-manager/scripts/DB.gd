@@ -1,6 +1,6 @@
 extends Node
 var db: SQLite = null # Подключенная база данных
-enum Tables {USERS, SETTINGS, PROJECTS, SECTIONS, FILES, TASKS, HINTS} # Таблицы в базе данных
+enum Tables {USERS, SETTINGS, PROJECTS, SECTIONS, TASKS, SQLITE_SEQUENCE} # Таблицы в базе данных
 
 # Стартовый запуск БД
 func _ready() -> void: connection_user_db()
@@ -25,9 +25,8 @@ func connection_db(db_name: String) -> void:
 	_open_db(db_name)
 	# Создание таблиц в базе
 	_create_table(Tables.SECTIONS)
-	_create_table(Tables.FILES, ["project_id INT"])
 	_create_table(Tables.PROJECTS, ["completed BOOLEAN", "url VARCHAR(255)", "comment VARHAR (255)"])
-	_create_table(Tables.TASKS, ["file_id INT", "section_id INT", "state INT", "create_date DATE", "update_date DATE"])
+	_create_table(Tables.TASKS, ["project_id INT", "section_id INT", "state INT", "create_date DATE", "update_date DATE"])
 	db.query("CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT,
 		color_preset BOOLEAN, color_scheme INT, color_1 VARCHAR(255), color_2 VARCHAR(255),
 		color_3 VARCHAR(255), color_4 VARCHAR(255), dark_theme BOOLEAN);")
@@ -68,6 +67,47 @@ func _insert(table: Variant, columns: String, values: Array) -> void:
 # Со всеми колонками таблицы
 func _insert_witn_columns(table: Variant, values: Array) -> void:
 	_insert(table, ", ".join(_get_columns(table)), values)
+
+# Обновление записей
+# Основной запрос
+func _update(table: Variant, columns: Array, values: Array, where: String = "") -> void:
+	var v: Array = []
+	if where: where = " WHERE " + where
+	for i in range([len(columns), len(values)].min()):
+		v.append(columns[i] + " = " + str(values[i]))
+	db.query("UPDATE `" + _get_table_name(table) + "` SET " + ",".join(v) + where + ";")
+
+# По индексу
+func _update_record(table: Variant, columns: Array, values: Array,
+			idx: Variant, other: String = "") -> void:
+	if other: other = "AND " + other
+	_update(table, columns, values, "id = " + str(idx) + other)
+
+# Все колонки у записи
+func update_with_columns(table: Variant, idx: Variant, values: Array, other: String = "") -> void:
+	_update_record(table, _get_columns(table), values, idx, other)
+
+# Удаление записей
+# Основной запрос
+func _delete(table: Variant, where: String = "") -> void:
+	if where: where = " WHERE " + where
+	db.query("DELETE FROM `"+_get_table_name(table)+"`"+where+";")
+
+# По индексу
+func _delete_record(table: Variant, idx: int, other: String = "") -> void:
+	if other: other = "AND " + other
+	var where_idx: String = "id = " + str(idx)
+	_delete(table, where_idx + other)
+	_update(table, ["id"], ["id - 1"], "id > " + str(idx))
+	_update(Tables.SQLITE_SEQUENCE, ["seq"], ["seq - 1"], 'name = "' + _get_table_name(table) + '"')
+
+# Пользователь
+func delete_user() -> void:
+	connection_user_db()
+	var data: Dictionary = select_all(Tables.USERS, 'login="'+File.config.login+'"')[0]
+	DirAccess.remove_absolute(File.user_base_path + File.show_data(data.base) + ".db")
+	_delete_record(Tables.USERS, data.id)
+	File.clear_config()
 
 # Запросы на поиск объектов
 # Основная функция
