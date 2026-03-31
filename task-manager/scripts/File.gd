@@ -184,10 +184,24 @@ func set_lang(obj: Variant) -> void:
 	for i in obj.get_children(): set_lang(i)
 
 # Создание стандартных вариантов локализации
-func _standard_language() -> Dictionary: return {}
+func _standard_language() -> Dictionary: return {
+	"_Errors": {
+			"_E1": "Обязательные поля должны быть заполнены",
+			"_E2": "Имя пользователя занято",
+			"_E3": "Неверный логин или пароль",
+			"_E4": "Объект с выбранным именем уже существует"
+		}
+	}
 
 # Русский
 func _cr_ru() -> void: _cr_lang_file("ru", _standard_language())
 
 # Английский
-func _cr_en() -> void: _cr_lang_file("en", {})
+func _cr_en() -> void: _cr_lang_file("en", {
+	"_Errors": {
+			"_E1": "Required fields must be filled in",
+			"_E2": "Username taken",
+			"_E3": "Incorrect login or password",
+			"_E4": "An object with the selected name already exists"
+		}
+	})

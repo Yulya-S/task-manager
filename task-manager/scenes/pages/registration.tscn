@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://blmw1fnuokcit"]
+[gd_scene load_steps=2 format=3 uid="uid://blmw1fnuokcit"]
+
+[ext_resource type="Script" uid="uid://wvse4hyyp8cs" path="res://scripts/error_label.gd" id="1_1pm6t"]
 
 [node name="Registration" type="Control"]
 layout_mode = 3
@@ -143,6 +145,7 @@ theme_override_colors/font_color = Color(0.756863, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 text_overrun_behavior = 3
+script = ExtResource("1_1pm6t")
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 0
