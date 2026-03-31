@@ -25,7 +25,7 @@ func clear() -> void:
 
 # Проверка заполнено ли текстовое поле
 func check(field: Variant) -> bool:
-	if field is TextEdit and field.get:
+	if field is TextEdit and field.get_text() == "":
 		set_state(States._E1)
 		return true
 	return false

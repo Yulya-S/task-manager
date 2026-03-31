@@ -185,6 +185,12 @@ func set_lang(obj: Variant) -> void:
 
 # Создание стандартных вариантов локализации
 func _standard_language() -> Dictionary: return {
+	# Регистрация
+	"Registration": "Регистрация", "Enter": "Вход", "LanguageLabel": "Язык:", "LoginLabel": "Логин:",
+	"PasswordLabel": "Пароль:", "Remember": "Запомни меня", "Show": "Показать пароль",
+	# Подсказки
+	"_Hints": [],
+	# Ошибки
 	"_Errors": {
 			"_E1": "Обязательные поля должны быть заполнены",
 			"_E2": "Имя пользователя занято",
@@ -198,6 +204,12 @@ func _cr_ru() -> void: _cr_lang_file("ru", _standard_language())
 
 # Английский
 func _cr_en() -> void: _cr_lang_file("en", {
+	# Регистрация
+	"Registration": "Registration", "Enter": "Entry", "LanguageLabel": "Language:", "LoginLabel": "Login:",
+	"PasswordLabel": "Password:", "Remember": "Remember me", "Show": "Show password",
+	# Подсказки
+	"_Hints": [],
+	# Ошибки
 	"_Errors": {
 			"_E1": "Required fields must be filled in",
 			"_E2": "Username taken",
