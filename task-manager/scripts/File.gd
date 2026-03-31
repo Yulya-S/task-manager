@@ -12,44 +12,6 @@ func _ready() -> void:
 	_create_config()
 	_create_langs()
 
-# Проверки для текстовых объектов
-# Проверка что текст - это число
-func text_is_number(text: String) -> bool:
-	return text.is_valid_int() or text.is_valid_float()
-
-# Преобразование текста в числовой формат
-func _valide_numeric_text(text_container: TextEdit) -> void:
-	var text: String = text_container.get_text()
-	if len(text) > 0:
-		# Удаление лишних точек дроби
-		var text_copy: PackedStringArray = text.split(".")
-		if len(text_copy) > 2:
-			for i in range(1, len(text_copy) - 1, 1):
-				text_copy[0] += text_copy[1]
-				text_copy.remove_at(1)
-		# Проверка что фрагменты текста, кроме одной точки является числами
-		var filtered_text: Variant = []
-		for i in text_copy:
-			filtered_text.append("")
-			for l in i: if l.is_valid_int(): filtered_text[-1] += l
-		filtered_text = ".".join(filtered_text)
-		# Проверка отличается ли результат от начального значения
-		if filtered_text != text:
-			var caret: int = text_container.get_caret_column()
-			text_container.set_text(filtered_text)
-			text_container.set_caret_column(caret - (len(text) - len(filtered_text)))
-
-# Изменение текста в TextEdit
-func text_changed_TextEdit(container: TextEdit, is_numeric: bool = false) -> void:
-	var text: String = container.get_text()
-	if is_numeric: _valide_numeric_text(container)
-	if len(text) > 0 and ("\t" in text or "\n" in text):
-		container.set_text(container.get_text().replace("\t", "").replace("\n", ""))
-		if container.find_next_valid_focus(): container.find_next_valid_focus().grab_focus()
-
-# Получение текстового значения элемента выпадающего списка
-func get_OB_text(button: OptionButton) -> String: return button.get_item_text(button.selected)
-
 # Работа с файлами
 # Сохранение данных в файл
 func _store_json(file_path: String, data: Dictionary) -> void:
@@ -118,11 +80,11 @@ func _cr_lang_file(f_name: String, value: Dictionary) -> void:
 
 # Считывание перевода
 func read_lang(container: OptionButton) -> void:
-	lang = _read_file(lang_base_path+get_OB_text(container)+".json")
+	lang = _read_file(lang_base_path+Global.get_OB_text(container)+".json")
 	lang.merge(_standard_language())
 	set_lang(container.get_parent())
 	# Сохранение выбора в файле конфигураций
-	config.lang = get_OB_text(container)
+	config.lang = Global.get_OB_text(container)
 	save_config()
 
 # Поиск ключа в базе перевода
@@ -139,7 +101,7 @@ func _lang_match(obj: Variant, key: String) -> void:
 		"CheckButton": set_CB(obj)
 		"ColorPickerButton": obj.get_child(0).set_text(lang[key]+" "+obj.name.split("_")[1])
 		"Label", "CheckBox":
-			if obj.text != "" and "-" not in obj.text and not text_is_number(obj.text):
+			if obj.text != "" and "-" not in obj.text and not Global.text_is_number(obj.text):
 				obj.set_text(lang[key])
 		"Button":
 			if obj.text in ["", "X"]: obj.tooltip_text = lang[key]

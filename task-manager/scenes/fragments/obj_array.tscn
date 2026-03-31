@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv8to47k7nnk4"]
+
+[ext_resource type="Script" uid="uid://b4mnikevag1yo" path="res://scripts/fragments/obj_array.gd" id="1_lheya"]
+
+[node name="ObjArray" type="ScrollContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lheya")
+
+[node name="Objects" type="VBoxContainer" parent="."]
+layout_mode = 2

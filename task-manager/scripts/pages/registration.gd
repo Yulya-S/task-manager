@@ -15,7 +15,7 @@ func _on_language_item_selected(_index: int) -> void: File.read_lang(Language)
 
 # Обработка ввода значений в текстовые поля
 func _on_text_changed(container_idx: int) -> void:
-	File.text_changed_TextEdit([$Login, Password][container_idx])
+	Global.text_changed_TextEdit([$Login, Password][container_idx])
 
 # Изменение видимости пароля
 func _on_show_toggled(toggled_on: bool) -> void:
@@ -41,7 +41,7 @@ func _entrance(auto: bool = false) -> void:
 	var data: Dictionary = DB.select_user()
 	DB.connection_db(File.show_data(data.base))
 	ColorScheme.color_reading()
-	Global.open_new_page(Global.Pages.SETTINGS)
+	Global.open_new_page(Global.Pages.TASKS)
 
 # Генерация названия базы данных
 func _generate_db_name() -> String:

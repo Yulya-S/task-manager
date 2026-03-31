@@ -139,3 +139,7 @@ func select_user() -> Dictionary:
 
 # Настройки
 func select_settings() -> Dictionary: return select_all(Tables.SETTINGS)[0]
+
+# Распределители
+# Получение списков объектов
+func match_select(table: Tables, filter: Dictionary) -> Array: return []

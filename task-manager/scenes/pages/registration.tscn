@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://blmw1fnuokcit"]
 
-[ext_resource type="Script" uid="uid://wvse4hyyp8cs" path="res://scripts/error_label.gd" id="1_1pm6t"]
+[ext_resource type="Script" uid="uid://wvse4hyyp8cs" path="res://scripts/fragments/error_label.gd" id="1_1pm6t"]
 [ext_resource type="Script" uid="uid://70jo0dsd7jiw" path="res://scripts/pages/registration.gd" id="1_lygme"]
 [ext_resource type="Texture2D" uid="uid://da2cwsefve03e" path="res://img/icons/question.png" id="2_grr8u"]
 
