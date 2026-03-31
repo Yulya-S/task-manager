@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://creevnlgoq21l"]
+
+[ext_resource type="PackedScene" uid="uid://cgrd3vw0y0k0y" path="res://scenes/fragments/head.tscn" id="1_pqndc"]
+
+[node name="Projects" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Head" parent="." instance=ExtResource("1_pqndc")]
+layout_mode = 0

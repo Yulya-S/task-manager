@@ -3,7 +3,7 @@ extends Node
 signal update_page(close_page: String) # Обновление данных на странице
 # Перечисление
 enum Dirs {PAGES, WINDOWS} # Директории объектов
-enum Pages {REGISTRATION, SETTINGS, PROJECTS, SECTIONS, TASKS, HINTS} # Страницы
+enum Pages {HINTS, SETTINGS, PROJECTS, SECTIONS, TASKS, REGISTRATION} # Страницы
 enum MouseOver {NORMAL, HOVER}
 # Переменные
 var main_scene: Node = null # Главная сцена проекта сцена
