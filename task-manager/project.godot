@@ -11,5 +11,15 @@ config_version=5
 [application]
 
 config/name="task manager"
+run/main_scene="uid://b174d777gpae4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+File="*res://scripts/File.gd"
+DB="*res://scripts/DB.gd"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.670588, 0.733333, 0.72549, 1)

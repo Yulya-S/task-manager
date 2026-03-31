@@ -1,0 +1,436 @@
+[gd_scene format=3 uid="uid://co8r6wwdhrmh2"]
+
+[node name="Settings" type="ColorRect"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.670588, 0.733333, 0.72549, 1)
+
+[node name="Setting" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 10.0
+offset_right = 1062.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.5187, 0.57, 0.564015, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Настройки"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Language" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 114.0
+offset_bottom = 41.0
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Color_Preset" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 102.0
+offset_right = 505.0
+offset_bottom = 133.0
+theme_override_colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+text = "Предустановленная тема"
+alignment = 2
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="ColorSchemePre" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 160.0
+offset_right = 721.0
+offset_bottom = 191.0
+text_overrun_behavior = 3
+clip_text = true
+selected = 0
+item_count = 8
+popup/item_0/text = "Стандартная"
+popup/item_0/id = 0
+popup/item_1/text = "Серая"
+popup/item_1/id = 1
+popup/item_2/text = "Лимон со смородиной"
+popup/item_2/id = 2
+popup/item_3/text = "Ржавый металл"
+popup/item_3/id = 3
+popup/item_4/text = "Лиса на поляне"
+popup/item_4/id = 4
+popup/item_5/text = "Ягода на ветке"
+popup/item_5/id = 5
+popup/item_6/text = "Ежевика"
+popup/item_6/id = 6
+popup/item_7/text = "Пингвин"
+popup/item_7/id = 7
+
+[node name="Label" type="Label" parent="ColorSchemePre"]
+layout_mode = 0
+offset_left = -319.0
+offset_right = -8.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Цветовое оформление"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ColorSchemeCus" type="OptionButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = 160.0
+offset_right = 721.0
+offset_bottom = 191.0
+text_overrun_behavior = 3
+clip_text = true
+selected = 0
+item_count = 4
+popup/item_0/text = "Моно"
+popup/item_0/id = 0
+popup/item_1/text = "Контраст"
+popup/item_1/id = 1
+popup/item_2/text = "Триада"
+popup/item_2/id = 2
+popup/item_3/text = "Тетрада"
+popup/item_3/id = 3
+
+[node name="Label" type="Label" parent="ColorSchemeCus"]
+layout_mode = 0
+offset_left = -355.0
+offset_right = -8.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Количество цветов"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Colors" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 160.0
+offset_right = 340.0
+offset_bottom = 200.0
+
+[node name="Color_1" type="ColorPickerButton" parent="Colors"]
+visible = false
+layout_mode = 2
+offset_left = -104.0
+offset_top = 62.0
+offset_right = 6.0
+offset_bottom = 93.0
+color = Color(0.282353, 0.282353, 0.282353, 1)
+edit_alpha = false
+
+[node name="Label" type="Label" parent="Colors/Color_1"]
+layout_mode = 0
+offset_left = -166.0
+offset_right = -8.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Цвет 1"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Color_2" type="ColorPickerButton" parent="Colors"]
+visible = false
+layout_mode = 2
+offset_left = 117.0
+offset_top = 62.0
+offset_right = 227.0
+offset_bottom = 93.0
+color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[node name="Label" type="Label" parent="Colors/Color_2"]
+layout_mode = 0
+offset_left = -166.0
+offset_right = -8.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Цвет 2"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Color_3" type="ColorPickerButton" parent="Colors"]
+visible = false
+layout_mode = 2
+offset_left = 338.0
+offset_top = 62.0
+offset_right = 448.0
+offset_bottom = 93.0
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="Label" type="Label" parent="Colors/Color_3"]
+layout_mode = 0
+offset_left = -166.0
+offset_right = -8.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Цвет 3"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Color_4" type="ColorPickerButton" parent="Colors"]
+visible = false
+layout_mode = 2
+offset_left = 559.0
+offset_top = 62.0
+offset_right = 669.0
+offset_bottom = 93.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Label" type="Label" parent="Colors/Color_4"]
+layout_mode = 0
+offset_left = -166.0
+offset_right = -8.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Цвет 4"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Dark_Theme" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 102.0
+offset_right = 927.0
+offset_bottom = 133.0
+theme_override_colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+text = "Светлая тема"
+alignment = 2
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Event_Page_Calendar" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 51.0
+offset_right = 505.0
+offset_bottom = 82.0
+theme_override_colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+text = "Календарь событий"
+alignment = 2
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Example" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 280.0
+offset_right = 1087.0
+offset_bottom = 533.0
+color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[node name="Background" type="ColorRect" parent="Example"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1017.0
+offset_bottom = 248.0
+
+[node name="Label" type="ColorRect" parent="Example"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 142.0
+offset_right = 1017.0
+offset_bottom = 175.0
+color = Color(0.695503, 0.695503, 0.695503, 1)
+
+[node name="TestLabel" type="Label" parent="Example/Label"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 319.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Пример текста"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Object" type="ColorRect" parent="Example"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 180.0
+offset_right = 1017.0
+offset_bottom = 213.0
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[node name="TestLabel" type="Label" parent="Example/Object"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 319.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Пример текста"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Filter" type="ColorRect" parent="Example"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 93.0
+offset_right = 1017.0
+offset_bottom = 137.0
+color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[node name="TestLabel" type="Label" parent="Example/Filter"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 319.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Пример текста"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="TestButton" type="Button" parent="Example/Filter"]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 6.0
+offset_right = 1004.0
+offset_bottom = 37.0
+text = "Пример кнопки"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Menu" type="ColorRect" parent="Example"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 49.0
+offset_right = 1017.0
+offset_bottom = 93.0
+color = Color(0.374139, 0.374139, 0.374139, 1)
+
+[node name="TestLabel" type="Label" parent="Example/Menu"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 319.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+text = "Пример текста"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="TestButton" type="Button" parent="Example/Menu"]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 6.0
+offset_right = 1004.0
+offset_bottom = 37.0
+text = "Пример кнопки"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Head" type="ColorRect" parent="Example"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1017.0
+offset_bottom = 49.0
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="TestLabel" type="Label" parent="Example/Head"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 319.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+text = "Пример текста"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="TestButton" type="Button" parent="Example/Head"]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 6.0
+offset_right = 1004.0
+offset_bottom = 37.0
+text = "Пример кнопки"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="DeleteUser" type="Button" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 577.0
+offset_right = 470.0
+offset_bottom = 619.0
+theme_override_font_sizes/font_size = 24
+text = "Удалить пользователя"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Apply" type="Button" parent="."]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 577.0
+offset_right = 992.0
+offset_bottom = 619.0
+theme_override_font_sizes/font_size = 24
+text = "Сохранить"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1092.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 52.0
+tooltip_text = "Отменить изменения"
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Удаление пользователя"
+initial_position = 1
+size = Vector2i(460, 106)
+ok_button_text = "Да"
+dialog_text = "Вы уверены? Все данные пользователя будут удалены"
+dialog_autowrap = true
+cancel_button_text = "Нет"
+
+[connection signal="item_selected" from="Language" to="." method="_on_language_item_selected"]
+[connection signal="toggled" from="Color_Preset" to="." method="_on_color_preset_toggled"]
+[connection signal="item_selected" from="ColorSchemePre" to="." method="_on_pre"]
+[connection signal="item_selected" from="ColorSchemeCus" to="." method="_on_cus"]
+[connection signal="color_changed" from="Colors/Color_1" to="." method="_on_color_1_changed"]
+[connection signal="color_changed" from="Colors/Color_2" to="." method="_on_color_2_changed"]
+[connection signal="color_changed" from="Colors/Color_3" to="." method="_on_color_3_changed"]
+[connection signal="color_changed" from="Colors/Color_4" to="." method="_on_color_4_changed"]
+[connection signal="toggled" from="Dark_Theme" to="." method="_on_dark_theme_toggled"]
+[connection signal="toggled" from="Event_Page_Calendar" to="." method="_on_event_page_calendar_toggled"]
+[connection signal="button_down" from="DeleteUser" to="." method="_on_delete_button_down"]
+[connection signal="button_down" from="Apply" to="." method="_on_apply_button_down"]
+[connection signal="button_down" from="Close" to="." method="_on_close_button_down"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
