@@ -22,6 +22,10 @@ DB="*res://scripts/DB.gd"
 Global="*res://scripts/Global.gd"
 ColorScheme="*res://scripts/ColorScheme.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.670588, 0.733333, 0.72549, 1)
