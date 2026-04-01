@@ -147,6 +147,8 @@ func set_lang(obj: Variant) -> void:
 
 # Создание стандартных вариантов локализации
 func _standard_language() -> Dictionary: return {
+	# Шапка
+	"Hints": "Инструкция", "Exit": "Выход", "Project": "Проекты", "Section": "Действия", "Task": "Задачи",
 	# Регистрация
 	"Registration": "Регистрация", "Enter": "Вход", "LanguageLabel": "Язык:", "LoginLabel": "Логин:",
 	"PasswordLabel": "Пароль:", "Remember": "Запомни меня", "Show": "Показать пароль",
@@ -182,6 +184,8 @@ func _cr_ru() -> void: _cr_lang_file("ru", _standard_language())
 
 # Английский
 func _cr_en() -> void: _cr_lang_file("en", {
+	# Шапка
+	"Hints": "Instructions", "Exit": "Exit", "Project": "Projects", "Actions": "Действия", "Task": "Tasks",
 	# Регистрация
 	"Registration": "Registration", "Enter": "Entry", "LanguageLabel": "Language:", "LoginLabel": "Login:",
 	"PasswordLabel": "Password:", "Remember": "Remember me", "Show": "Show password",

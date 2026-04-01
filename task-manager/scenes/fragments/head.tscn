@@ -48,7 +48,7 @@ offset_top = 5.0
 offset_right = 223.0
 offset_bottom = 133.0
 scale = Vector2(0.31, 0.31)
-tooltip_text = "Очистка данных"
+tooltip_text = "Проекты"
 icon = ExtResource("3_24wiy")
 
 [node name="Section" type="Button" parent="."]
@@ -58,7 +58,7 @@ offset_top = 5.0
 offset_right = 268.0
 offset_bottom = 133.0
 scale = Vector2(0.31, 0.31)
-tooltip_text = "Главная"
+tooltip_text = "Действия"
 icon = ExtResource("4_b0yl4")
 
 [node name="Task" type="Button" parent="."]
@@ -68,7 +68,7 @@ offset_top = 5.0
 offset_right = 313.0
 offset_bottom = 133.0
 scale = Vector2(0.31, 0.31)
-tooltip_text = "Кошельки"
+tooltip_text = "Задачи"
 icon = ExtResource("3_24wiy")
 
 [node name="Login" type="Label" parent="."]
