@@ -25,7 +25,7 @@ text = "Название проекта"
 vertical_alignment = 1
 autowrap_mode = 1
 script = ExtResource("1_o0dh0")
-next_page = 2
+next_page = 6
 next_page_dir = 1
 
 [node name="Completed" type="Label" parent="."]

@@ -120,7 +120,16 @@ func _color_from_theme(theme: bool) -> Color: return Color.WHITE if theme else C
 func repainting(obj: Variant) -> void:
 	match obj.get_class():
 		"ColorRect": _set_ColorRect(obj)
-		"ProgressBar": _change_color(obj, 1, "modulate")
+		"ProgressBar":
+			var new_stylebox_fill: StyleBox = obj.get_theme_stylebox("fill").duplicate()
+			_change_color(new_stylebox_fill, 0, "border_color")
+			obj.add_theme_stylebox_override("fill", new_stylebox_fill)
+			if obj.name == "Canceled":
+				var new_stylebox_back: StyleBox = obj.get_theme_stylebox("background").duplicate()
+				_change_color(new_stylebox_back, 0, "border_color")
+				_change_color(new_stylebox_back, 2, "bg_color")
+				new_stylebox_back.bg_color.a = 0.8
+				obj.add_theme_stylebox_override("background", new_stylebox_back)
 		"Button", "TextEdit": _set_all_button_color_parametrs(obj)
 		"OptionButton":
 			_set_all_button_color_parametrs(obj)
@@ -133,9 +142,5 @@ func repainting(obj: Variant) -> void:
 		"Label":
 			if obj.name != "Error": _set_font_color(obj)
 			_set_font_color(obj, "outline_", 6)
-		_: match obj.name:
-			"Gradient": obj.texture.gradient = ColorScheme.chart_gradient
-			"X", "Border", "Separator": _change_color(obj, 0, "default_color")
-			"Frame": _change_color(obj, 3.5, "default_color")
-			"SelectedCell": _change_color(obj, 1, "default_color")
+		_: if obj.name in ["X", "Border", "Separator"]: _change_color(obj, 0, "default_color")
 	for i in obj.get_children(): repainting(i)

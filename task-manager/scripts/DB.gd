@@ -140,12 +140,14 @@ func select_user() -> Dictionary:
 # Настройки
 func select_settings() -> Dictionary: return select_all(Tables.SETTINGS)[0]
 
+func select_projects(where: String, order: String = "") -> Array:
+	return select("p.*, (SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 1) completed,
+		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 2) canceled,
+		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 0) count FROM projects p", where, order)
+
 # Распределители
 # Получение списков объектов
 func match_select(table: Tables, filter: Dictionary) -> Array:
 	match table:
-		Tables.PROJECTS:
-			return select("p.*, (SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 0) completed,
-				(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 1) canceled,
-				(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 2) count FROM projects p", filter.where, filter.order)
+		Tables.PROJECTS: return select_projects(filter.where, filter.order)
 	return []

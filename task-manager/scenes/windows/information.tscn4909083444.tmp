@@ -1,0 +1,184 @@
+[gd_scene load_steps=11 format=3 uid="uid://eloq8vfysn3v"]
+
+[ext_resource type="PackedScene" uid="uid://cgrd3vw0y0k0y" path="res://scenes/fragments/head.tscn" id="1_ehpja"]
+[ext_resource type="Script" uid="uid://x1f83ybtptek" path="res://scripts/pages/information.gd" id="1_hoi43"]
+[ext_resource type="Texture2D" uid="uid://ci4x5y0bwf2k0" path="res://img/icons/right.png" id="2_hoi43"]
+[ext_resource type="Texture2D" uid="uid://cntvk4dwjxp2h" path="res://img/icons/brush.png" id="3_4ecnt"]
+[ext_resource type="Texture2D" uid="uid://d1yvp7nvkgtp7" path="res://img/icons/plus.png" id="4_47tay"]
+[ext_resource type="PackedScene" uid="uid://bv8to47k7nnk4" path="res://scenes/fragments/obj_array.tscn" id="5_v5cco"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47tay"]
+bg_color = Color(0.381703, 0.381703, 0.381703, 0.654902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehpja"]
+bg_color = Color(0.698039, 0.133333, 0.133333, 1)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hoi43"]
+bg_color = Color(1, 1, 1, 0)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ecnt"]
+bg_color = Color(0.133333, 0.545098, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[node name="Information" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoi43")
+
+[node name="Head" parent="." instance=ExtResource("1_ehpja")]
+layout_mode = 0
+
+[node name="Menu" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 1152.0
+offset_bottom = 100.0
+color = Color(0.376471, 0.72549, 0.698039, 1)
+
+[node name="WalletLabel" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 275.0
+offset_right = 1140.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -10
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 25
+text = "Информация о проекте"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 3
+
+[node name="Back" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 148.0
+offset_bottom = 133.0
+scale = Vector2(0.31, 0.31)
+tooltip_text = "Назад"
+icon = ExtResource("2_hoi43")
+
+[node name="Update" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 5.0
+offset_right = 193.0
+offset_bottom = 133.0
+scale = Vector2(0.31, 0.31)
+tooltip_text = "Изменить"
+icon = ExtResource("3_4ecnt")
+
+[node name="Add" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 5.0
+offset_right = 238.0
+offset_bottom = 133.0
+scale = Vector2(0.31, 0.31)
+tooltip_text = "Создать запись"
+icon = ExtResource("4_47tay")
+
+[node name="Filter" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 1152.0
+offset_bottom = 156.0
+color = Color(0.627451, 0.913725, 0.894118, 1)
+
+[node name="Title" type="Label" parent="Filter"]
+layout_mode = 2
+offset_left = 20.0
+offset_right = 1132.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 20
+text = "Название проекта"
+vertical_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 3
+
+[node name="ObjArray" parent="." instance=ExtResource("5_v5cco")]
+layout_mode = 0
+offset_top = 161.0
+offset_right = 1152.0
+offset_bottom = 592.0
+obj = 2
+
+[node name="Total" type="ColorRect" parent="."]
+layout_mode = 2
+offset_top = 598.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.873298, 0.873299, 0.873298, 1)
+
+[node name="TLabel" type="Label" parent="Total"]
+layout_mode = 2
+offset_left = 5.0
+offset_right = 447.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 20
+text = "Шкала выполнения задач:"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 3
+
+[node name="Canceled" type="ProgressBar" parent="Total"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 7.0
+offset_right = 1142.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_47tay")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ehpja")
+value = 10.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Completed" type="ProgressBar" parent="Total"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 7.0
+offset_right = 1142.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hoi43")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ecnt")
+value = 2.0
+show_percentage = false
+
+[connection signal="button_down" from="Menu/Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="Menu/Update" to="." method="_on_update_button_down"]
+[connection signal="button_down" from="Menu/Add" to="." method="_on_cash_flow_button_down"]

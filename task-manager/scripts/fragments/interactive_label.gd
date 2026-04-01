@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 	if state == Global.MouseOver.NORMAL or not id: return
 	if event.is_action("click") and event.is_pressed():
 		if next_page_dir == Global.Dirs.PAGES: Global.open_new_page(next_page)
-		else: Global.open_window(next_page, id, next_page_dir)
+		else: Global.open_window(next_page, id, Global.Dirs.WINDOWS)
 
 # Обработка наведения мыши
 func _on_mouse_entered() -> void: state = Global.MouseOver.HOVER

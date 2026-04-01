@@ -11,6 +11,9 @@ func _ready() -> void:
 	Global.connect("update_page", Callable(self, "_update_page"))
 	_update_page()
 
+# Получение данных фильтра
+func _get_filter() -> Array: return [Filter]
+
 # Запуск обновления данных на странице
 func _update_page() -> void:
 	Global.set_color_and_lang(self)
@@ -18,11 +21,5 @@ func _update_page() -> void:
 
 # Обновление данных
 func update_data(obj: Variant = self) -> void:
-	if obj != self: Global.run_func(obj, "update_data", [Filter])
+	if obj != self: Global.run_func(obj, "update_data", _get_filter())
 	for i in obj.get_children(): update_data(i)
-
-# Изменение данных после смены дня
-func new_day() -> void:
-	if Filter: Filter.reset_date_filters()
-	$Head.update_date()
-	update_data()
