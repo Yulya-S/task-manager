@@ -122,3 +122,8 @@ func get_filter(filter: Variant = {}) -> Dictionary:
 	filter = filter.duplicate()
 	for i in new_filter.keys(): if i not in filter.keys(): filter[i] = new_filter[i]
 	return filter
+
+# Применение цвета и перевода
+func set_color_and_lang(obj: Variant) -> void:
+	File.set_lang(obj)
+	ColorScheme.repainting(obj)

@@ -1,0 +1,28 @@
+extends Control
+class_name Page
+# Подключение путей к объектам в сцене
+@onready var Objects = get_node_or_null("ObjArray")
+@onready var Filter = get_node_or_null("Filter")
+
+# Подключение сигнала
+func _ready() -> void:
+	if Global.current_page > Global.Pages.PROJECTS: Filter.set_OB_items(Global.Pages.PROJECTS)
+	if Global.current_page == Global.Pages.TASKS: Filter.set_OB_items(Global.Pages.SECTIONS)
+	Global.connect("update_page", Callable(self, "_update_page"))
+	_update_page()
+
+# Запуск обновления данных на странице
+func _update_page() -> void:
+	Global.set_color_and_lang(self)
+	update_data()
+
+# Обновление данных
+func update_data(obj: Variant = self) -> void:
+	if obj != self: Global.run_func(obj, "update_data", [Filter])
+	for i in obj.get_children(): update_data(i)
+
+# Изменение данных после смены дня
+func new_day() -> void:
+	if Filter: Filter.reset_date_filters()
+	$Head.update_date()
+	update_data()

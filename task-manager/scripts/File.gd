@@ -160,6 +160,8 @@ func _standard_language() -> Dictionary: return {
 	"SettingsConfirmationDialog": {"text": "Все данные пользователя будут удалены", "title": "Удаление пользователя"},
 	# Окна создания / изменения
 	"Apply": "Сохранить", "Close": "Отменить изменения",
+	# Страница проектов
+	"__ST1": "В процессе", "__ST2": "Завершено", "__ST3": "Отменено",
 	# Окно подтверждения
 	"_ConfirmationDialog": {"cancel": "Нет", "ok": "Да"}, "__sure": "Вы уверены?",
 	# Общие фрагменты для фильтра сортировки (По id, по алфавиту)
@@ -193,6 +195,8 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	"SettingsConfirmationDialog": {"text": "All user data will be deleted", "title": "Deleting a user"},
 	# Окна создания / изменения
 	"Apply": "Save", "Close": "Cancel changes",
+	# Страница проектов
+	"__ST1": "In progress", "__ST2": "Completed", "__ST3": "Canceled",
 	# Окно подтверждения
 	"_ConfirmationDialog": {"cancel": "No", "ok": "Yes"}, "__sure": "Are you sure?",
 	# Общие фрагменты для фильтра сортировки (По id, по алфавиту)

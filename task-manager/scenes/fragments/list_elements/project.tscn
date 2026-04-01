@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bei37qun26won"]
+[gd_scene load_steps=3 format=3 uid="uid://bei37qun26won"]
 
+[ext_resource type="Script" uid="uid://b11021c4eirc7" path="res://scripts/fragments/ListElement.gd" id="1_brn1i"]
 [ext_resource type="Script" uid="uid://b731i6tbqj5mx" path="res://scripts/fragments/interactive_label.gd" id="1_o0dh0"]
 
 [node name="Project" type="ColorRect"]
@@ -8,6 +9,7 @@ offset_right = 969.0
 offset_bottom = 23.0
 mouse_filter = 1
 color = Color(0.955963, 0.955963, 0.955963, 1)
+script = ExtResource("1_brn1i")
 
 [node name="Title" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 23)
@@ -53,7 +55,7 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
-text = "Откланенные"
+text = "Отклоненные"
 horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 1
@@ -74,7 +76,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="Date" type="Label" parent="."]
+[node name="State" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

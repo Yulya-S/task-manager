@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://creevnlgoq21l"]
+[gd_scene load_steps=6 format=3 uid="uid://creevnlgoq21l"]
 
+[ext_resource type="Script" uid="uid://bep2n4p1rm01" path="res://scripts/pages/page.gd" id="1_o0w5t"]
 [ext_resource type="PackedScene" uid="uid://cgrd3vw0y0k0y" path="res://scenes/fragments/head.tscn" id="1_pqndc"]
 [ext_resource type="Texture2D" uid="uid://d1yvp7nvkgtp7" path="res://img/icons/plus.png" id="2_qoq0g"]
 [ext_resource type="Script" uid="uid://bkop7jq6u4e54" path="res://scripts/fragments/filter.gd" id="3_o0w5t"]
@@ -10,6 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_o0w5t")
 
 [node name="Head" parent="." instance=ExtResource("1_pqndc")]
 layout_mode = 0
@@ -48,10 +50,9 @@ OB_items = {
 },
 "Status": {
 "1": "state=1",
-"2": "state=2"
+"2": "state=0"
 }
 }
-title_pref = "l."
 
 [node name="Title" type="TextEdit" parent="Filter"]
 clip_contents = false

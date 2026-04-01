@@ -25,7 +25,7 @@ func connection_db(db_name: String) -> void:
 	_open_db(db_name)
 	# Создание таблиц в базе
 	_create_table(Tables.SECTIONS)
-	_create_table(Tables.PROJECTS, ["completed BOOLEAN", "url VARCHAR(255)", "comment VARHAR (255)"])
+	_create_table(Tables.PROJECTS, ["state BOOLEAN", "comment VARHAR (255)"])
 	_create_table(Tables.TASKS, ["project_id INT", "section_id INT", "state INT", "create_date DATE", "update_date DATE"])
 	db.query("CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT,
 		color_preset BOOLEAN, color_scheme INT, color_1 VARCHAR(255), color_2 VARCHAR(255),
@@ -142,4 +142,10 @@ func select_settings() -> Dictionary: return select_all(Tables.SETTINGS)[0]
 
 # Распределители
 # Получение списков объектов
-func match_select(table: Tables, filter: Dictionary) -> Array: return []
+func match_select(table: Tables, filter: Dictionary) -> Array:
+	match table:
+		Tables.PROJECTS:
+			return select("p.*, (SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 0) completed,
+				(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 1) canceled,
+				(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 2) count FROM projects p", filter.where, filter.order)
+	return []

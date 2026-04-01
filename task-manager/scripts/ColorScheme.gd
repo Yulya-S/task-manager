@@ -56,7 +56,7 @@ func _set_ColorRect(obj) -> void:
 
 # Замена системных иконок
 func _set_icon(obj: Variant, theme_name: String, icon: String) -> void:
-	obj.add_theme_icon_override(theme_name, load("res://img/godot_icon/" + theme_name + "_" + icon))
+	obj.add_theme_icon_override(theme_name, load("res://img/godot_icons/" + theme_name + "_" + icon))
 
 # Замена цвета ячеек окна выбора даты
 func set_DS_cell_color(obj: Variant, text: String, selected: bool, hovered: bool) -> void:

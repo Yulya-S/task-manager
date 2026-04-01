@@ -7,7 +7,10 @@ var filter: Dictionary = _get_empty_filter() # Параметры запроса
 var order_item_texts: Array = [] # Список параметров сортировки
 
 # Стартовое заполнение фильтров времени
-func _ready() -> void: reset_date_filters()
+func _ready() -> void:
+	if get_node("Order") and len(order_item_texts) == 0:
+		for l in range(get_node("Order").get_item_count()):
+			order_item_texts.append(get_node("Order").get_item_text(l))
 
 # Применение значений фильтра
 func set_filter(obj: Variant, value: int) -> void: obj.selected = value
@@ -26,7 +29,7 @@ func _update_value(obj: Variant, value_name: String, sep: String) -> void:
 	filter[value_name] += OB_items[obj.name][str(obj.selected)]
 
 # Получение пустого фильтра
-func _get_empty_filter() -> Dictionary: return {"where": "", "date": "", "order": ""}
+func _get_empty_filter() -> Dictionary: return {"where": "", "order": ""}
 
 # Сборка фильтра
 func get_filter() -> Dictionary:
@@ -36,11 +39,8 @@ func get_filter() -> Dictionary:
 			filter.where = "("+filter.where+")"
 		match i.name:
 			"Title": filter.where = title_pref + 'title LIKE "%' + i.get_text() + '%"'
-			"Year": filter.date = [Global.get_OB_text(i)]
-			"Month": filter.date.append(i.selected + 1)
 			"Button": continue
 			_: _other_filters(i)
-	if filter.date is Array: filter.date = Global.date_to_sql_date("-".join(filter.date+[1]))
 	return filter
 
 # Обработка дополнительных фильтров
@@ -59,24 +59,11 @@ func _other_filters(obj: Variant) -> void:
 # Получение списка ключей
 func _get_keys(obj: Variant) -> Array: return OB_items[obj.name].keys()
 
-# Сброс фильтра месяца и года
-func reset_date_filters() -> void:
-	for i in get_children():
-		match i.name:
-			"Year": _on_year_item_selected()
-			"Month": i.selected = Global.get_date().month - 1
-			"Order":
-				if len(order_item_texts) == 0: for l in range(i.get_item_count()):
-					order_item_texts.append(i.get_item_text(l))
-
 # Сброс перевода способа сортировки
 func reset_order() -> void:
 	if $Order: for i in range($Order.get_item_count()): $Order.set_item_text(i, order_item_texts[i])
 
 # Обработки нажатия кнопок
-# Выбор года
-func _on_year_item_selected(index: int = -1) -> void: Global.fill_year_OB($Year, index)
-
 # Применение фильтра
 func _on_button_button_down() -> void: Global.run_func(get_parent(), "update_data")
 
