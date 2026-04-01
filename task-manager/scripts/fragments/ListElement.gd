@@ -42,6 +42,6 @@ func set_values(data: Dictionary) -> void:
 						if data[_name_id(i)]: i.set_object(data[i.name.to_lower()],  data[_name_id(i)])
 						elif data[i.name.to_lower()] == null: i.set_text("-")
 	match scene_file_path.split("/")[-1].replace(".tscn", ""):
-		"project": $State.set_text("__ST" + str(data.state + 1))
+		"project": $StateLabel.set_text("__ST" + str(data.state + 1))
 	File.set_lang(self)
 	_set_line_size()

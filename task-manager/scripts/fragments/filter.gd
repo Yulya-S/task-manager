@@ -4,13 +4,13 @@ extends ColorRect
 @export var title_pref: String = "" # Приставка для запроса по названию
 # Переменные
 var filter: Dictionary = _get_empty_filter() # Параметры запроса фильтрации
-var order_item_texts: Array = [] # Список параметров сортировки
+var OB_objects: Dictionary = {} # Список параметров сортировки
 
 # Стартовое заполнение фильтров времени
 func _ready() -> void:
-	if get_node("Order") and len(order_item_texts) == 0:
-		for l in range(get_node("Order").get_item_count()):
-			order_item_texts.append(get_node("Order").get_item_text(l))
+	for i in get_children(): if i is OptionButton:
+		OB_objects[i.name] = []
+		for l in range(i.get_item_count()): OB_objects[i.name].append(i.get_item_text(l))
 
 # Применение значений фильтра
 func set_filter(obj: Variant, value: int) -> void: obj.selected = value
@@ -60,8 +60,10 @@ func _other_filters(obj: Variant) -> void:
 func _get_keys(obj: Variant) -> Array: return OB_items[obj.name].keys()
 
 # Сброс перевода способа сортировки
-func reset_order() -> void:
-	if $Order: for i in range($Order.get_item_count()): $Order.set_item_text(i, order_item_texts[i])
+func reset_OB() -> void:
+	for i in OB_objects.keys():
+		for l in range(get_node(NodePath(i)).get_item_count()):
+			get_node(NodePath(i)).set_item_text(l, OB_objects[i][l])
 
 # Обработки нажатия кнопок
 # Применение фильтра

@@ -30,7 +30,7 @@ offset_top = 5.0
 offset_right = 148.0
 offset_bottom = 133.0
 scale = Vector2(0.31, 0.31)
-tooltip_text = "Создать займ"
+tooltip_text = "Создать проект"
 icon = ExtResource("2_qoq0g")
 
 [node name="Filter" type="ColorRect" parent="."]
@@ -48,7 +48,7 @@ OB_items = {
 "2": "count",
 "filter": "order"
 },
-"Status": {
+"State": {
 "1": "state=1",
 "2": "state=0"
 }
@@ -75,7 +75,7 @@ text = "Фрагмент названия"
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Status" type="OptionButton" parent="Filter"]
+[node name="State" type="OptionButton" parent="Filter"]
 layout_mode = 0
 offset_left = 299.0
 offset_top = 24.0
@@ -87,12 +87,12 @@ clip_text = true
 selected = 0
 item_count = 3
 popup/item_0/id = 0
-popup/item_1/text = "Завершено"
+popup/item_1/text = "__ST2"
 popup/item_1/id = 1
-popup/item_2/text = "В процессе"
+popup/item_2/text = "__ST1"
 popup/item_2/id = 2
 
-[node name="Label" type="Label" parent="Filter/Status"]
+[node name="Label" type="Label" parent="Filter/State"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = -24.0

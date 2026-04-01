@@ -107,7 +107,6 @@ func _lang_match(obj: Variant, key: String) -> void:
 			if obj.text in ["", "X"]: obj.tooltip_text = lang[key]
 			else: obj.set_text(lang[key])
 		"OptionButton":
-			if obj.name == "Order": obj.get_parent().reset_order()
 			var idx: int = 0
 			for i in range(obj.get_item_count()):
 				if obj.get_item_text(i) == "" or (obj.get_item_text(i) not in lang.keys() and key not in lang.keys()):
@@ -140,15 +139,15 @@ func set_OB_elements(obj: OptionButton) -> void:
 # Применение перевода
 func set_lang(obj: Variant) -> void:
 	var key: String = _find_lang_keys(obj)
-	if obj is OptionButton and obj.name == "Month": key = "_Months"
-	elif obj is Label and "__" in obj.text and obj.text in lang.keys(): key = obj.text
+	if obj.name == "Filter": Global.run_func(obj, "reset_OB")
+	if obj is Label and "__" in obj.text and obj.text in lang.keys(): key = obj.text
 	if key != "" or obj is OptionButton: _lang_match(obj, key)
 	for i in obj.get_children(): set_lang(i)
 
 # Создание стандартных вариантов локализации
 func _standard_language() -> Dictionary: return {
 	# Шапка
-	"Hints": "Инструкция", "Exit": "Выход", "Project": "Проекты", "Section": "Действия", "Task": "Задачи",
+	"Hints": "Инструкция", "Setting": "Настройки", "Exit": "Выход", "Project": "Проекты", "Section": "Действия", "Task": "Задачи",
 	# Регистрация
 	"Registration": "Регистрация", "Enter": "Вход", "LanguageLabel": "Язык:", "LoginLabel": "Логин:",
 	"PasswordLabel": "Пароль:", "Remember": "Запомни меня", "Show": "Показать пароль",
@@ -160,6 +159,12 @@ func _standard_language() -> Dictionary: return {
 	"ColorSchemePre": ["Стандартный", "Серый", "Лимон со смородиной", "Ржавый металл", "Лиса на поляне", "Ягода на ветке", "Ежевика", "Пингвин"],
 	"ColorSchemeCus": ["Моно", "Контраст", "Триада", "Тетрада"],
 	"SettingsConfirmationDialog": {"text": "Все данные пользователя будут удалены", "title": "Удаление пользователя"},
+	# Фильтры
+	"FilterTitleLabel": "Фрагмент названия", "FilterOrderLabel": "Порядок сортировки",
+	"FilterButton": "Применить", "StateLabel": "Статус",
+	# Страница проектов
+	"ProjectsMenuAdd": "Создать проект", "ProjectsFilterOrder": ["По количеству активных задач"],
+	"ProjectTitle": "Название проекта", "ProjectCompleted": "Выполненные", "ProjectCanceled": "Отклоненные", "ProjectCount": "Оставшиеся",
 	# Окна создания / изменения
 	"Apply": "Сохранить", "Close": "Отменить изменения",
 	# Страница проектов
@@ -185,7 +190,7 @@ func _cr_ru() -> void: _cr_lang_file("ru", _standard_language())
 # Английский
 func _cr_en() -> void: _cr_lang_file("en", {
 	# Шапка
-	"Hints": "Instructions", "Exit": "Exit", "Project": "Projects", "Actions": "Действия", "Task": "Tasks",
+	"Hints": "Instructions", "Setting": "Settings", "Exit": "Exit", "Project": "Projects", "Section": "Actions", "Task": "Tasks",
 	# Регистрация
 	"Registration": "Registration", "Enter": "Entry", "LanguageLabel": "Language:", "LoginLabel": "Login:",
 	"PasswordLabel": "Password:", "Remember": "Remember me", "Show": "Show password",
@@ -197,6 +202,12 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	"ColorSchemePre": ["Standard", "Grey", "Lemon with currants", "Rusty metal", "A fox in a clearing", "Berry on a branch", "Blackberry", "Penguin"],
 	"ColorSchemeCus": ["Mono", "Contrast", "Triad", "Tetrad"],
 	"SettingsConfirmationDialog": {"text": "All user data will be deleted", "title": "Deleting a user"},
+	# Фильтры
+	"FilterTitleLabel": "Title fragment", "FilterOrderLabel": "Sorting order",
+	"StateLabel": "Status", "FilterButton": "Apply",
+	# Страница проектов
+	"ProjectsMenuAdd": "Create a project", "ProjectsFilterOrder": ["By number of active tasks"],
+	"ProjectTitle": "Project Title", "ProjectCompleted": "Completed", "ProjectCanceled": "Rejected", "ProjectCount": "Remaining",
 	# Окна создания / изменения
 	"Apply": "Save", "Close": "Cancel changes",
 	# Страница проектов
