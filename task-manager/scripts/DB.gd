@@ -167,5 +167,5 @@ func match_select(table: Tables, filter: Dictionary) -> Array:
 func match_actions(action_type: ActionTypes, obj_type: Global.Pages, idx: String, values: Array = []) -> void:
 	match action_type:
 		ActionTypes.INSERT: _insert_witn_columns(obj_type as Tables, values)
-		ActionTypes.UPDATE: call("_update_"+Global.enum_key(Global.Pages, obj_type), idx, values)
+		ActionTypes.UPDATE: update_with_columns(obj_type as Tables, idx, values)
 		ActionTypes.DELETE: call("_delete_"+Global.enum_key(Global.Pages, obj_type), idx)
