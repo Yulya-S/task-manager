@@ -140,16 +140,17 @@ func select_user() -> Dictionary:
 # Настройки
 func select_settings() -> Dictionary: return select_all(Tables.SETTINGS)[0]
 
-func select_projects(where: String, order: String = "") -> Array:
-	return select("p.*, (SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 1) completed,
+# Получение сумм количества задачь по проекта
+func fragment_pregress_bar_data() -> String:
+	return "(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 1) completed,
 		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 2) canceled,
-		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 0) count FROM projects p", where, order)
+		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 0) count FROM projects p"
 
 # Распределители
 # Получение списков объектов
 func match_select(table: Tables, filter: Dictionary) -> Array:
 	match table:
-		Tables.PROJECTS: return select_projects(filter.where, filter.order)
+		Tables.PROJECTS: return select("p.*, " + fragment_pregress_bar_data(), filter.where, filter.order)
 		Tables.TASKS:
 			return select("t.*, p.title AS project, s.title AS section FROM tasks t LEFT JOIN projects p ON p.id = t.project_id
 				LEFT JOIN sections s ON s.id = t.section_id", filter.where, filter.order)
