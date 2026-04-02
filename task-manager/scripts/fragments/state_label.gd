@@ -6,6 +6,7 @@ var state_idx: int = 0 # Текущее состояние объекта
 func set_obj(new_sate: int) -> void:
 	state_idx = new_sate
 	Global.run_func(self, "set_text", [File.lang["__ST" + str(state_idx + 1)]])
+	if get_parent().get_node_or_null("Date"): get_parent().get_node("Date").visible = bool(state_idx)
 	ColorScheme.new_font_color(self, [ColorScheme._get_sys_color(0), Color.FOREST_GREEN, Color.FIREBRICK][state_idx])
 
 # Функция запускаемая при нажатии на объект
