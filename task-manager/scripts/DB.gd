@@ -26,7 +26,7 @@ func connection_db(db_name: String) -> void:
 	# Создание таблиц в базе
 	_create_table(Tables.SECTIONS)
 	_create_table(Tables.PROJECTS, ["state BOOLEAN", "comment VARHAR (255)"])
-	_create_table(Tables.TASKS, ["project_id INT", "section_id INT", "state INT", "create_date DATE", "update_date DATE"])
+	_create_table(Tables.TASKS, ["project_id INT", "section_id INT", "state INT", "date DATE"])
 	db.query("CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT,
 		color_preset BOOLEAN, color_scheme INT, color_1 VARCHAR(255), color_2 VARCHAR(255),
 		color_3 VARCHAR(255), color_4 VARCHAR(255), dark_theme BOOLEAN);")
@@ -150,4 +150,7 @@ func select_projects(where: String, order: String = "") -> Array:
 func match_select(table: Tables, filter: Dictionary) -> Array:
 	match table:
 		Tables.PROJECTS: return select_projects(filter.where, filter.order)
+		Tables.TASKS:
+			return select("t.*, p.title AS project, s.title AS section FROM tasks t LEFT JOIN projects p ON p.id = t.project_id
+				LEFT JOIN sections s ON s.id = t.section_id", filter.where, filter.order)
 	return []

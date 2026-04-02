@@ -11,9 +11,13 @@ var highlighter_color: Color = Color.AQUAMARINE # Цвет подсветки
 func color_assembly(colors: Array, theme: bool) -> void:
 	system_gradient = _custom_gradient([_color_from_theme(theme)] + colors + [_color_from_theme(not theme)], true)
 	
-# Замена цвета текста
+# Замена цвета текста на системный
 func _set_font_color(obj: Variant, column: String = "", color_idx: int = 0) -> void:
-	obj.add_theme_color_override("font_"+column+"color", _get_sys_color(color_idx))
+	new_font_color(obj, _get_sys_color(color_idx), column)
+
+# Изменение цвета текста на любой цвет
+func new_font_color(obj: Variant, new_color: Color, column: String = "") -> void:
+	obj.add_theme_color_override("font_"+column+"color", new_color)
 
 # Изменение цвета кнопки
 func _set_buttons_color(obj: Variant, a: float = 0.5, column: String = "normal") -> void:

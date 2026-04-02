@@ -41,7 +41,7 @@ scale = Vector2(0.31, 0.31)
 tooltip_text = "Настройки"
 icon = ExtResource("2_fjqy4")
 
-[node name="Project" type="Button" parent="."]
+[node name="Projects" type="Button" parent="."]
 layout_mode = 0
 offset_left = 95.0
 offset_top = 5.0
@@ -51,7 +51,7 @@ scale = Vector2(0.31, 0.31)
 tooltip_text = "Проекты"
 icon = ExtResource("3_24wiy")
 
-[node name="Section" type="Button" parent="."]
+[node name="Sections" type="Button" parent="."]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 5.0
@@ -61,7 +61,7 @@ scale = Vector2(0.31, 0.31)
 tooltip_text = "Действия"
 icon = ExtResource("4_b0yl4")
 
-[node name="Task" type="Button" parent="."]
+[node name="Tasks" type="Button" parent="."]
 layout_mode = 0
 offset_left = 185.0
 offset_top = 5.0
@@ -112,7 +112,7 @@ color = Color(0.376471, 0.72549, 0.698039, 1)
 
 [connection signal="button_down" from="Hints" to="." method="_on_pages_button_down" binds= [0]]
 [connection signal="button_down" from="Setting" to="." method="_on_pages_button_down" binds= [1]]
-[connection signal="button_down" from="Project" to="." method="_on_pages_button_down" binds= [2]]
-[connection signal="button_down" from="Section" to="." method="_on_pages_button_down" binds= [3]]
-[connection signal="button_down" from="Task" to="." method="_on_pages_button_down" binds= [4]]
+[connection signal="button_down" from="Projects" to="." method="_on_pages_button_down" binds= [2]]
+[connection signal="button_down" from="Sections" to="." method="_on_pages_button_down" binds= [3]]
+[connection signal="button_down" from="Tasks" to="." method="_on_pages_button_down" binds= [4]]
 [connection signal="button_down" from="Exit" to="." method="_on_exit_button_down"]

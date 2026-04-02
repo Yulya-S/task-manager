@@ -141,13 +141,14 @@ func set_lang(obj: Variant) -> void:
 	var key: String = _find_lang_keys(obj)
 	if obj.name == "Filter": Global.run_func(obj, "reset_OB")
 	if obj is Label and "__" in obj.text and obj.text in lang.keys(): key = obj.text
-	if key != "" or obj is OptionButton: _lang_match(obj, key)
+	if (key != "" and "@" not in obj.get_parent().name) or obj is OptionButton:
+		_lang_match(obj, key)
 	for i in obj.get_children(): set_lang(i)
 
 # Создание стандартных вариантов локализации
 func _standard_language() -> Dictionary: return {
 	# Шапка
-	"Hints": "Инструкция", "Setting": "Настройки", "Exit": "Выход", "Project": "Проекты", "Section": "Действия", "Task": "Задачи",
+	"Hints": "Инструкция", "Setting": "Настройки", "Exit": "Выход", "Projects": "Проекты", "Sections": "Действия", "Tasks": "Задачи",
 	# Регистрация
 	"Registration": "Регистрация", "Enter": "Вход", "LanguageLabel": "Язык:", "LoginLabel": "Логин:",
 	"PasswordLabel": "Пароль:", "Remember": "Запомни меня", "Show": "Показать пароль",
@@ -190,7 +191,7 @@ func _cr_ru() -> void: _cr_lang_file("ru", _standard_language())
 # Английский
 func _cr_en() -> void: _cr_lang_file("en", {
 	# Шапка
-	"Hints": "Instructions", "Setting": "Settings", "Exit": "Exit", "Project": "Projects", "Section": "Actions", "Task": "Tasks",
+	"Hints": "Instructions", "Setting": "Settings", "Exit": "Exit", "Projects": "Projects", "Sections": "Actions", "Tasks": "Tasks",
 	# Регистрация
 	"Registration": "Registration", "Enter": "Entry", "LanguageLabel": "Language:", "LoginLabel": "Login:",
 	"PasswordLabel": "Password:", "Remember": "Remember me", "Show": "Show password",

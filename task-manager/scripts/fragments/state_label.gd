@@ -1,0 +1,14 @@
+extends InteractiveObj
+@export var states_count: int = 3 # Максимальное количество состаяний
+var state_idx: int = 0 # Текущее состояние объекта
+
+func set_obj(new_sate: int) -> void:
+	state_idx = new_sate
+	Global.run_func(self, "set_text", [File.lang["__ST" + str(state_idx + 1)]])
+	ColorScheme.new_font_color(self, [ColorScheme._get_sys_color(0), Color.FOREST_GREEN, Color.FIREBRICK][state_idx])
+
+# Функция запускаемая при нажатии на объект
+func _start_func() -> void:
+	if get_parent().get("idx") == 0 or get_parent().get_node("Title").get("idx") == 0: return
+	var new_state: int = state_idx + 1
+	set_obj(0 if new_state >= states_count else new_state)

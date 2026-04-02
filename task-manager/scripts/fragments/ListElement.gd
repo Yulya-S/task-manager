@@ -25,23 +25,13 @@ func set_values(data: Dictionary) -> void:
 	for i in get_children():
 		if i.name.to_lower() not in data.keys(): continue # Отмена применения значения
 		# Применение значений
-		match i.get_class():
-			"ProgressBar":
-				i.value = data[i.name.to_lower()]
-				i.modulate = ColorScheme.get_color(i.value, i.max_value, ColorScheme.scales_gradient)
-			"ColorRect":
-				if data[i.name.to_lower()] is bool: i.visible = data[i.name.to_lower()]
-				elif data[i.name.to_lower()] is Color:
-					i.color = data[i.name.to_lower()]
-					i.visible = true
-			"Label":
-				if "title" not in i.name.to_lower() or not i.get("set_object"):
-					i.set_text(str(data[i.name.to_lower()]))
-				else:
-					if _name_id(i) in data.keys():
-						if data[_name_id(i)]: i.set_object(data[i.name.to_lower()],  data[_name_id(i)])
-						elif data[i.name.to_lower()] == null: i.set_text("-")
+		if "title" not in i.name.to_lower() or not i.get("set_object"):
+			i.set_text(str(data[i.name.to_lower()]))
+		else:
+			if _name_id(i) in data.keys():
+				if data[_name_id(i)]: i.set_object(data[i.name.to_lower()],  data[_name_id(i)])
+				elif data[i.name.to_lower()] == null: i.set_text("-")
 	match scene_file_path.split("/")[-1].replace(".tscn", ""):
-		"project": $StateLabel.set_text("__ST" + str(data.state + 1))
+		_: $StateLabel.set_obj(data.state)
 	File.set_lang(self)
 	_set_line_size()
