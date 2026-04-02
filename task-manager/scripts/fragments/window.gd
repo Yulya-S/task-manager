@@ -1,78 +1,33 @@
-extends Control
-class_name Windows
+extends ColorRect
 # Подключение пути к объекту в сцене
-@onready var Error = get_child(0).get_child(2)
-# Экспортируемая переменная
-@export var page_type: Global.Pages = Global.Pages.PROJECTS # Тип создаваемого / Изменяемого объекта
-# Переменная
-var idx: int = 0 # Индекс изменяемого объекта
+@onready var Delete = $Delete
 
-# Применение цветовой палитры окна
-func _ready() -> void:
-	Global.set_color_and_lang(self)
-	if Global.current_page == Global.Pages.TASKS:
-		Global.fill_optionButton($Project_id, DB.select("* FROM projects"))
-		Global.fill_optionButton($Section_is, DB.select("* FROM sections"))
+# Запуск действий в бд
+func _run_action(action_type: DB.ActionTypes) -> void:
+	DB.match_actions(action_type, get_parent().page_type, str(get_parent().idx), get_parent().get_values())
 
-# Обновление данных на сранице с родительской страницы
-func set_from_page(obj_idx: int) -> void:
-	pass
-	#_on_section_id_item_selected(obj_idx)
+# Обработки нажатия кнопок
+# Отмена
+func on_close_button_down() -> void:
+	Global.delete_child(Global.g_p(self), get_parent())
 
-# Обновление данных на странице
-func set_page(new_idx: int) -> void:
-	var data: Dictionary = DB.match_elem(str(new_idx), page_type)
-	if data == {}:
-		_window().on_close_button_down()
-		return
-	idx = new_idx
-	_window().Delete.visible = true
-	for i in get_children():
-		match i.get_class():
-			"TextEdit": i.set_text(str(data[i.name.to_lower()]))
-			"CheckButton":
-				i.button_pressed = data[i.name.to_lower()]
-				_on_income_toggled(data[i.name.to_lower()])
-			"OptionButton":
-				if "id" in i.name.to_lower():
-					if data[i.name.to_lower()] == null:
-						if i.name.to_lower() != "wallet_id": continue
-						_window().on_close_button_down()
-						return
-					data[i.name.to_lower()] = i.get_item_index(data[i.name.to_lower()])
-				if get(_create_func_name(i)): call(_create_func_name(i), data[i.name.to_lower()])
-				else: i.selected = data[i.name.to_lower()]
-		if i.name == "Date": i.set_date(data[i.name.to_lower()])
+# Сохранение / изменение
+func _on_apply_button_down() -> void:
+	if not get_parent().check_object(): return
+	if get_parent().idx == 0: _run_action(DB.ActionTypes.INSERT)
+	else: _run_action(DB.ActionTypes.UPDATE)
+	_apply_changes()
 
-# Получение пути к Window
-func _window() -> Node: return get_child(0)
+# Удаление
+func _on_delete_button_down() -> void: $ConfirmationDialog.visible = true
 
-# Сборка имени функции
-func _create_func_name(obj: Variant) -> String: return "_on_" + obj.name.to_lower() + "_item_selected"
+# Изменение объекта
+func _apply_changes() -> void:
+	Global.emit_signal("update_page")
+	on_close_button_down()
 
-# Получение значений со страницы
-func get_values() -> Array:
-	var values: Array = []
-	for i in get_children():
-		match i.get_class():
-			"CheckButton": values.append(str(i.button_pressed))
-			"OptionButton": values.append(str(Global.get_OB_id(i)))
-			"TextEdit":
-				values.append(i.get_text())
-				if "title" in i.name.to_lower(): values[-1] = '"'+values[-1]+'"'
-			_: if i.name == "Date": values.append('"'+i.get_date()+'"')
-	return values
-
-# Проверка верности заполнения полей
-func check_object() -> bool:
-	Error.clear()
-	if Error.check($Title): return false
-	if page_type != Global.Pages.TASKS:
-		if not DB.callv("check_"+DB.enum_key(Global.Pages, page_type)+"_name", [$Title.get_text(), idx]):
-			return Error.set_state(Error.States._E4)
-	return false
-
-# Обработка нажатий кнопок
-# Переключатель
-func _on_income_toggled(toggled_on: bool) -> void:
-	File.set_CB($Income)
+# Подтверждение удаления объекта
+func _on_confirmation_dialog_confirmed() -> void:
+	_run_action(DB.ActionTypes.DELETE)
+	Global.g_p(self).close_inf_page()
+	_apply_changes()

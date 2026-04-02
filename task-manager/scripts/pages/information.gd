@@ -31,3 +31,6 @@ func set_progress_bars() -> void:
 func _on_back_button_down() -> void:
 	Global.delete_child(get_parent(), self)
 	idx = 0
+
+# Изменить
+func _on_update_button_down() -> void: Global.open_window(Global.Pages.PROJECTS, idx)

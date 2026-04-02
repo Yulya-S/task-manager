@@ -1,6 +1,6 @@
 extends Label
 # Перечисление
-enum States {NONE, _E1, _E2, _E3, _E4, _E5, _E6, _E7, _E8, _E9} # Список возможных ошибок
+enum States {NONE, _E1, _E2, _E3, _E4} # Список возможных ошибок
 # Переменная
 var state: States = States.NONE # Код текущей ошибки
 

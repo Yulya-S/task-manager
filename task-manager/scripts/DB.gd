@@ -1,6 +1,7 @@
 extends Node
 var db: SQLite = null # Подключенная база данных
 enum Tables {USERS, SETTINGS, PROJECTS, SECTIONS, TASKS, SQLITE_SEQUENCE} # Таблицы в базе данных
+enum ActionTypes {INSERT, UPDATE, DELETE} # Виды действий с объектами
 
 # Стартовый запуск БД
 func _ready() -> void: connection_user_db()
@@ -146,6 +147,10 @@ func fragment_pregress_bar_data() -> String:
 		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 2) canceled,
 		(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 0) count FROM projects p"
 
+# Проверка существования объекта
+func check_obj(table: Tables, title: String, idx: int) -> bool:
+	return len(select_all(table, 'title="'+title+'" AND id!='+str(idx))) == 0
+
 # Распределители
 # Получение списков объектов
 func match_select(table: Tables, filter: Dictionary) -> Array:
@@ -155,3 +160,10 @@ func match_select(table: Tables, filter: Dictionary) -> Array:
 			return select("t.*, p.title AS project, s.title AS section FROM tasks t LEFT JOIN projects p ON p.id = t.project_id
 				LEFT JOIN sections s ON s.id = t.section_id", filter.where, filter.order)
 	return []
+
+# Распределение обработки действий с объектами
+func match_actions(action_type: ActionTypes, obj_type: Global.Pages, idx: String, values: Array = []) -> void:
+	match action_type:
+		ActionTypes.INSERT: _insert_witn_columns(obj_type as Tables, values)
+		ActionTypes.UPDATE: call("_update_"+Global.enum_key(Global.Pages, obj_type), idx, values)
+		ActionTypes.DELETE: call("_delete_"+Global.enum_key(Global.Pages, obj_type), idx)

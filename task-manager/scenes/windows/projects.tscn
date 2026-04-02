@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm8d2roc1o62"]
+
+[ext_resource type="Script" uid="uid://s1tvmxbv4hvn" path="res://scripts/pages/window_page.gd" id="1_1u7qr"]
+[ext_resource type="PackedScene" uid="uid://dkqydyohdj55s" path="res://scenes/windows/window.tscn" id="2_lnpay"]
+
+[node name="ProjectWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_1u7qr")
+
+[node name="Window" parent="." instance=ExtResource("2_lnpay")]
+layout_mode = 0
+
+[node name="Title" type="TextEdit" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 485.0
+offset_top = 171.0
+offset_right = 906.0
+offset_bottom = 202.0
+autowrap_mode = 1
+scroll_past_end_of_file = true
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -257.0
+offset_right = -5.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Название проекта:"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="State" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 209.0
+offset_right = 793.0
+offset_bottom = 240.0
+theme_override_colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_hover_color = Color(0.364706, 0.364706, 0.364706, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+text = "В процессе"
+alignment = 2
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Comment" type="TextEdit" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 228.0
+offset_top = 273.0
+offset_right = 906.0
+offset_bottom = 492.0
+autowrap_mode = 1
+scroll_past_end_of_file = true
+
+[node name="Label" type="Label" parent="Comment"]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 678.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Комментарий"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[connection signal="text_changed" from="Title" to="." method="_on_title_text_changed"]
+[connection signal="toggled" from="State" to="." method="_on_completed_toggled"]
+[connection signal="text_changed" from="Comment" to="." method="_on_title_text_changed"]
