@@ -21,3 +21,8 @@ func update_data(obj: Variant = self) -> void:
 		i.max_value = sum
 		i.value = data[i.name.to_lower()]
 	super.update_data(obj)
+
+# Назад
+func _on_back_button_down() -> void:
+	Global.delete_child(get_parent(), self)
+	idx = 0

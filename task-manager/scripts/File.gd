@@ -166,6 +166,10 @@ func _standard_language() -> Dictionary: return {
 	# Страница проектов
 	"ProjectsMenuAdd": "Создать проект", "ProjectsFilterOrder": ["По количеству активных задач"],
 	"ProjectTitle": "Название проекта", "ProjectCompleted": "Выполненные", "ProjectCanceled": "Отклоненные", "ProjectCount": "Оставшиеся",
+	# Перевод страницы информации о проекте
+	"Back": "Назад", "Update": "Изменить", "AddTask": "Создать задачу",
+	"InformationMenuLabel": "Информация о проекте", "TotalLabel": "Шкала выполнения задач:",
+	"Date": "Дата завершения", "Project": "Проект", "Section": "Действие", "TaskTitle": "Текст задачи",
 	# Окна создания / изменения
 	"Apply": "Сохранить", "Close": "Отменить изменения",
 	# Страница проектов
@@ -209,6 +213,10 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	# Страница проектов
 	"ProjectsMenuAdd": "Create a project", "ProjectsFilterOrder": ["By number of active tasks"],
 	"ProjectTitle": "Project Title", "ProjectCompleted": "Completed", "ProjectCanceled": "Rejected", "ProjectCount": "Remaining",
+	# Перевод страницы информации о проекте
+	"Back": "Back", "Update": "Edit", "AddTask": "Create task",
+	"InformationMenuLabel": "Project Information", "TotalLabel": "Task Progress Bar:",
+	"Date": "Completion date", "Project": "Project", "Section": "Action", "TaskTitle": "Task text",
 	# Окна создания / изменения
 	"Apply": "Save", "Close": "Cancel changes",
 	# Страница проектов
