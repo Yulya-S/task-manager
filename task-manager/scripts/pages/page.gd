@@ -23,3 +23,6 @@ func _update_page() -> void:
 func update_data(obj: Variant = self) -> void:
 	if obj != self: Global.run_func(obj, "update_data", _get_filter())
 	for i in obj.get_children(): update_data(i)
+
+# Нажатие кнопки создания объекта
+func _on_add_button_down() -> void: Global.open_window(Global.Pages.get(name.to_upper()))

@@ -51,10 +51,8 @@ func _set_ColorRect(obj) -> void:
 		"Filter", "Load", "Total": _change_color(obj, 3)
 		"Example": for i in range(2): _change_color(obj.get_child(1 + i), 4 + i)
 		_:
-			if Global.g_p(obj, 3).name == "FastCreations": _change_color(obj, 4)
-			else: match obj.get_parent().get_class():
+			match obj.get_parent().get_class():
 				"HBoxContainer": _change_color(obj, 5)
-				"GridContainer": _change_color(obj, 6)
 				"VBoxContainer":
 					_change_color(obj, 4 + int(obj.get_parent().get_child_count() != 1))
 

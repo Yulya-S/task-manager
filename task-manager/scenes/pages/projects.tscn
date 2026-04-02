@@ -149,5 +149,6 @@ offset_right = 1152.0
 offset_bottom = 643.0
 obj = 2
 
+[connection signal="button_down" from="Menu/Add" to="." method="_on_add_button_down"]
 [connection signal="text_changed" from="Filter/Title" to="Filter" method="_on_title_text_changed"]
 [connection signal="button_down" from="Filter/Button" to="Filter" method="_on_button_button_down"]
