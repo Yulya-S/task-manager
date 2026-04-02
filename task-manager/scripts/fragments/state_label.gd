@@ -2,6 +2,7 @@ extends InteractiveObj
 @export var states_count: int = 3 # Максимальное количество состаяний
 var state_idx: int = 0 # Текущее состояние объекта
 
+# Применение значения статуса
 func set_obj(new_sate: int) -> void:
 	state_idx = new_sate
 	Global.run_func(self, "set_text", [File.lang["__ST" + str(state_idx + 1)]])
