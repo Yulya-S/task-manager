@@ -1,6 +1,6 @@
 extends Node
 var db: SQLite = null # Подключенная база данных
-enum Tables {USERS, SETTINGS, PROJECTS, SECTIONS, TASKS, SQLITE_SEQUENCE} # Таблицы в базе данных
+enum Tables {USERS, SETTINGS, PROJECTS, SECTIONS, TASKS, SQLITE_SEQUENCE, TEMP_TABLE} # Таблицы в базе данных
 enum ActionTypes {INSERT, UPDATE, DELETE} # Виды действий с объектами
 
 # Стартовый запуск БД
@@ -112,6 +112,31 @@ func delete_user() -> void:
 	_delete_record(Tables.USERS, data.id)
 	File.clear_config()
 
+# Изменение индексов в таблице
+func _delete_and_update_ids(table: Variant, idx: Variant, name_fr: String = "", other: String = "") -> void:
+	_delete(table, name_fr + "id = " + str(idx) + other)
+	_create_table(Tables.TEMP_TABLE, ["old_id INTEGER"])
+	db.query("INSERT INTO temp_table (old_id) SELECT ROWID FROM " + _get_table_name(table) + ";")
+	var sel: String = "(SELECT id FROM temp_table WHERE old_id = " + _get_table_name(table) + ".id)"
+	_update(table, ["id"], [sel], "EXISTS " + sel)
+	_update(Tables.SQLITE_SEQUENCE, ["seq"], ["(SELECT COUNT(*) FROM "+_get_table_name(table)+")"],
+		'name = "' + _get_table_name(table) + '"')
+	db.query("DROP TABLE temp_table;")
+	_update(table, [name_fr + "id"], [name_fr + "id - 1"], name_fr + "id > " + str(idx))
+
+# Проект
+func _delete_projects(idx: int) -> void:
+	_delete_record(Tables.PROJECTS, idx)
+	_delete_and_update_ids(Tables.TASKS, idx, "project_")
+
+# Действие
+func _delete_sections(idx: int) -> void:
+	_delete_record(Tables.SECTIONS, idx)
+	_delete_and_update_ids(Tables.TASKS, idx, "section_")
+
+# Задача
+func _delete_tasks(idx: int) -> void: _delete_record(Tables.TASKS, idx)
+
 # Запросы на поиск объектов
 # Основная функция
 func select(req_text: String, where: String = "", order: String = "", group: String = "") -> Array:
@@ -168,4 +193,4 @@ func match_actions(action_type: ActionTypes, obj_type: Global.Pages, idx: String
 	match action_type:
 		ActionTypes.INSERT: _insert_witn_columns(obj_type as Tables, values)
 		ActionTypes.UPDATE: update_with_columns(obj_type as Tables, idx, values)
-		ActionTypes.DELETE: call("_delete_"+Global.enum_key(Global.Pages, obj_type), idx)
+		ActionTypes.DELETE: call("_delete_"+DB.enum_key(Global.Pages, obj_type), int(idx))
