@@ -57,9 +57,7 @@ func get_values() -> Array:
 		match i.get_class():
 			"CheckButton": values.append(str(i.button_pressed))
 			"OptionButton": values.append(str(Global.get_OB_id(i)))
-			"TextEdit":
-				values.append(i.get_text())
-				if "title" in i.name.to_lower(): values[-1] = '"'+values[-1]+'"'
+			"TextEdit": values.append('"'+i.get_text()+'"')
 			_: if i.name == "Date": values.append('"'+i.get_date()+'"')
 	return values
 
@@ -70,7 +68,7 @@ func check_object() -> bool:
 	if page_type != Global.Pages.TASKS:
 		if not DB.check_obj(page_type as DB.Tables, $Title.get_text(), idx):
 			return Error.set_state(Error.States._E4)
-	return false
+	return true
 
 # Обработка нажатий кнопок
 # Переключатель

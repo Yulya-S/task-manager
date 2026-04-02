@@ -32,7 +32,7 @@ func connection_db(db_name: String) -> void:
 		color_preset BOOLEAN, color_scheme INT, color_1 VARCHAR(255), color_2 VARCHAR(255),
 		color_3 VARCHAR(255), color_4 VARCHAR(255), dark_theme BOOLEAN);")
 	# Создание стандартных данных
-	_insert_witn_columns(Tables.SETTINGS, [0, 0, '"3a9891ff"', '"c8c8c8ff"', "null", "null", 0])
+	if len(select_all(Tables.SETTINGS)) == 0: _insert_witn_columns(Tables.SETTINGS, [0, 0, '"3a9891ff"', '"c8c8c8ff"', "null", "null", 0])
 
 # Запрос на создание таблицы
 func _create_table(title: Tables, t_columns: Array = []) -> void:
@@ -62,6 +62,8 @@ func _get_columns(table: Variant) -> Array:
 # Создание записей
 # Основной запрос
 func _insert(table: Variant, columns: String, values: Array) -> void:
+	print("INSERT INTO `" + _get_table_name(table) + "` (" + columns +
+		") VALUES (" + ", ".join(values) + ");")
 	db.query("INSERT INTO `" + _get_table_name(table) + "` (" + columns +
 		") VALUES (" + ", ".join(values) + ");")
 
