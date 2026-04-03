@@ -98,7 +98,7 @@ func _find_lang_keys(obj: Variant, key: String = "") -> String:
 # Изменение текста объекта в зависимости от типа объекта
 func _lang_match(obj: Variant, key: String) -> void:
 	match obj.get_class():
-		"CheckButton": set_CB(obj)
+		"CheckButton": obj.set_text(lang[key])
 		"ColorPickerButton": obj.get_child(0).set_text(lang[key]+" "+obj.name.split("_")[1])
 		"Label", "CheckBox":
 			if obj.text != "" and "-" not in obj.text and not Global.text_is_number(obj.text):
@@ -140,9 +140,8 @@ func set_OB_elements(obj: OptionButton) -> void:
 func set_lang(obj: Variant) -> void:
 	var key: String = _find_lang_keys(obj)
 	if obj.name == "Filter": Global.run_func(obj, "reset_OB")
-	if obj is Label and "__" in obj.text and obj.text in lang.keys(): key = obj.text
-	if (key != "" and "@" not in obj.get_parent().name) or obj is OptionButton:
-		_lang_match(obj, key)
+	if obj.get("text") and "__" in obj.get("text") and obj.get("text") in lang.keys(): key = obj.text
+	if (key != "" and "@" not in obj.get_parent().name) or obj is OptionButton: _lang_match(obj, key)
 	for i in obj.get_children(): set_lang(i)
 
 # Создание стандартных вариантов локализации
@@ -166,12 +165,14 @@ func _standard_language() -> Dictionary: return {
 	# Страница проектов
 	"ProjectsMenuAdd": "Создать проект", "ProjectsFilterOrder": ["По количеству активных задач"],
 	"ProjectTitle": "Название проекта", "ProjectCompleted": "Выполненные", "ProjectCanceled": "Отклоненные", "ProjectCount": "Оставшиеся",
-	# Перевод страницы информации о проекте
+	# Страница информации о проекте
 	"Back": "Назад", "Update": "Изменить", "AddTask": "Создать задачу",
 	"InformationMenuLabel": "Информация о проекте", "TotalLabel": "Шкала выполнения задач:",
 	"Date": "Дата завершения", "Project": "Проект", "Section": "Действие", "TaskTitle": "Текст задачи",
 	# Окна создания / изменения
-	"Apply": "Сохранить", "Close": "Отменить изменения",
+	"Apply": "Сохранить", "Close": "Отменить изменения", "Delete": "Удалить",
+	# Окно создания проекта
+	"CommentLabel": "Комментарий", "ProjectWindowTitleLabel": "Название проекта:",
 	# Страница проектов
 	"__ST1": "В процессе", "__ST2": "Завершено", "__ST3": "Отменено",
 	# Окно подтверждения
@@ -213,12 +214,14 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	# Страница проектов
 	"ProjectsMenuAdd": "Create a project", "ProjectsFilterOrder": ["By number of active tasks"],
 	"ProjectTitle": "Project Title", "ProjectCompleted": "Completed", "ProjectCanceled": "Rejected", "ProjectCount": "Remaining",
-	# Перевод страницы информации о проекте
+	# Страница информации о проекте
 	"Back": "Back", "Update": "Edit", "AddTask": "Create task",
 	"InformationMenuLabel": "Project Information", "TotalLabel": "Task Progress Bar:",
 	"Date": "Completion date", "Project": "Project", "Section": "Action", "TaskTitle": "Task text",
 	# Окна создания / изменения
-	"Apply": "Save", "Close": "Cancel changes",
+	"Apply": "Save", "Close": "Cancel changes", "Delete": "Delete",
+	# Окно создания проекта
+	"CommentLabel": "Comment", "ProjectWindowTitleLabel": "Project Title:",
 	# Страница проектов
 	"__ST1": "In progress", "__ST2": "Completed", "__ST3": "Canceled",
 	# Окно подтверждения
