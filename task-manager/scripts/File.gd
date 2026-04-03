@@ -140,7 +140,9 @@ func set_OB_elements(obj: OptionButton) -> void:
 func set_lang(obj: Variant) -> void:
 	var key: String = _find_lang_keys(obj)
 	if obj.name == "Filter": Global.run_func(obj, "reset_OB")
-	if obj.get("text") and "__" in obj.get("text") and obj.get("text") in lang.keys(): key = obj.text
+	if obj.get("text") and "__" in obj.get("text") and \
+		obj.get("text") in lang.keys() and obj is not OptionButton:
+			key = obj.text
 	if (key != "" and "@" not in obj.get_parent().name) or obj is OptionButton: _lang_match(obj, key)
 	for i in obj.get_children(): set_lang(i)
 
@@ -173,9 +175,10 @@ func _standard_language() -> Dictionary: return {
 	"Apply": "Сохранить", "Close": "Отменить изменения", "Delete": "Удалить",
 	# Окно создания проекта
 	"CommentLabel": "Комментарий", "ProjectWindowTitleLabel": "Название проекта:",
-	
-	"TasksFilterOrder": ["По количеству активных задач"],
-	# Страница проектов
+	# Задачи
+	"TasksFilterOrder": ["По дате обновления"], "TaskWindowLabel": "Текст задачи:",
+	"TasksMenuAdd": "Создать задачу",
+	# Состояния объекта
 	"__ST1": "В процессе", "__ST2": "Завершено", "__ST3": "Отменено",
 	# Окно подтверждения
 	"_ConfirmationDialog": {"cancel": "Нет", "ok": "Да"}, "__sure": "Вы уверены?",
@@ -224,9 +227,10 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	"Apply": "Save", "Close": "Cancel changes", "Delete": "Delete",
 	# Окно создания проекта
 	"CommentLabel": "Comment", "ProjectWindowTitleLabel": "Project Title:",
-	
-	"TasksFilterOrder": ["По количеству активных задач"],
-	# Страница проектов
+	# Задачи
+	"TasksFilterOrder": ["By update date"], "TaskWindowLabel": "Problem text:",
+	"TasksMenuAdd": "Create a task",
+	# Состояния объекта
 	"__ST1": "In progress", "__ST2": "Completed", "__ST3": "Canceled",
 	# Окно подтверждения
 	"_ConfirmationDialog": {"cancel": "No", "ok": "Yes"}, "__sure": "Are you sure?",

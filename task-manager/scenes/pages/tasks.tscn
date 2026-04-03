@@ -128,7 +128,7 @@ selected = 0
 item_count = 1
 popup/item_0/id = 0
 
-[node name="Label" type="Label" parent="Filter/Project"]
+[node name="Project" type="Label" parent="Filter/Project"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = -24.0
@@ -152,7 +152,7 @@ selected = 0
 item_count = 1
 popup/item_0/id = 0
 
-[node name="Label" type="Label" parent="Filter/Section"]
+[node name="Section" type="Label" parent="Filter/Section"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = -24.0
