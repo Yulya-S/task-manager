@@ -192,6 +192,6 @@ show_percentage = false
 
 [connection signal="button_down" from="Menu/Back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="Menu/Update" to="." method="_on_update_button_down"]
-[connection signal="button_down" from="Menu/AddTask" to="." method="_on_cash_flow_button_down"]
+[connection signal="button_down" from="Menu/AddTask" to="." method="_on_add_task_button_down"]
 [connection signal="mouse_entered" from="Filter/Completed" to="Filter/Completed" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Filter/Completed" to="Filter/Completed" method="_on_mouse_exited"]

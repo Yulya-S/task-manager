@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3 uid="uid://ho1nnpfhytta"]
+
+[ext_resource type="Script" uid="uid://s1tvmxbv4hvn" path="res://scripts/pages/window_page.gd" id="1_70td0"]
+[ext_resource type="PackedScene" uid="uid://dkqydyohdj55s" path="res://scenes/windows/window.tscn" id="2_nmpp4"]
+
+[node name="TaskWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_70td0")
+page_type = 4
+
+[node name="Window" parent="." instance=ExtResource("2_nmpp4")]
+layout_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 194.0
+offset_right = 480.0
+offset_bottom = 292.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Текст задачи:"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Title" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 194.0
+offset_right = 906.0
+offset_bottom = 292.0
+wrap_mode = 1
+scroll_past_end_of_file = true
+
+[node name="Project_id" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 311.0
+offset_right = 906.0
+offset_bottom = 342.0
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Project" type="Label" parent="Project_id"]
+layout_mode = 0
+offset_left = -370.0
+offset_right = -5.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Проект"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Section_id" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 361.0
+offset_right = 906.0
+offset_bottom = 392.0
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="Section" type="Label" parent="Section_id"]
+layout_mode = 0
+offset_left = -370.0
+offset_right = -5.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Действие"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="State" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 411.0
+offset_right = 906.0
+offset_bottom = 442.0
+text_overrun_behavior = 3
+clip_text = true
+selected = 0
+item_count = 3
+popup/item_0/text = "__ST1"
+popup/item_0/id = 0
+popup/item_1/text = "__ST2"
+popup/item_1/id = 1
+popup/item_2/text = "__ST3"
+popup/item_2/id = 2
+
+[node name="State" type="Label" parent="State"]
+layout_mode = 0
+offset_left = -370.0
+offset_right = -5.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Состояние"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[connection signal="item_selected" from="Section_id" to="." method="_on_section_id_item_selected"]
+[connection signal="item_selected" from="State" to="." method="_on_section_id_item_selected"]

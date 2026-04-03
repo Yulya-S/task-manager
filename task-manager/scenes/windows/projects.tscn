@@ -52,26 +52,26 @@ alignment = 2
 text_overrun_behavior = 3
 clip_text = true
 
-[node name="Comment" type="TextEdit" parent="."]
-clip_contents = false
+[node name="CommentLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 228.0
-offset_top = 273.0
+offset_top = 237.0
 offset_right = 906.0
-offset_bottom = 492.0
-autowrap_mode = 1
-scroll_past_end_of_file = true
-
-[node name="Label" type="Label" parent="Comment"]
-layout_mode = 0
-offset_top = -36.0
-offset_right = 678.0
-offset_bottom = -5.0
+offset_bottom = 268.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Комментарий"
 vertical_alignment = 1
 text_overrun_behavior = 3
+
+[node name="Comment" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 273.0
+offset_right = 906.0
+offset_bottom = 492.0
+wrap_mode = 1
+scroll_past_end_of_file = true
 
 [connection signal="text_changed" from="Title" to="." method="_on_title_text_changed"]
 [connection signal="toggled" from="State" to="." method="_on_completed_toggled"]

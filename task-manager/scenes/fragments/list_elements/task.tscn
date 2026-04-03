@@ -26,7 +26,6 @@ text = "Текст задачи"
 vertical_alignment = 1
 autowrap_mode = 1
 script = ExtResource("2_5i6ai")
-next_page = 6
 next_page_dir = 1
 
 [node name="Section" type="Label" parent="."]

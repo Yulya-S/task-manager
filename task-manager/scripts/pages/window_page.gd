@@ -10,9 +10,9 @@ var idx: int = 0 # Индекс изменяемого объекта
 # Применение цветовой палитры окна
 func _ready() -> void:
 	Global.set_color_and_lang(self)
-	if Global.current_page == Global.Pages.TASKS:
+	if page_type == Global.Pages.TASKS:
 		Global.fill_optionButton($Project_id, DB.select("* FROM projects"))
-		Global.fill_optionButton($Section_is, DB.select("* FROM sections"))
+		Global.fill_optionButton($Section_id, DB.select("* FROM sections"))
 
 # Обновление данных на сранице с родительской страницы
 func set_from_page(obj_idx: int) -> void:

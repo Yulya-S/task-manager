@@ -38,3 +38,6 @@ func _on_back_button_down() -> void:
 
 # Изменить
 func _on_update_button_down() -> void: Global.open_window(Global.Pages.PROJECTS, idx)
+
+# Создание задачи
+func _on_add_task_button_down() -> void: Global.open_window(Global.Pages.TASKS)

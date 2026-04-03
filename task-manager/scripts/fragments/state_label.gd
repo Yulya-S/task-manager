@@ -15,3 +15,6 @@ func _start_func() -> void:
 	var new_state: int = state_idx + 1
 	set_obj(0 if new_state >= states_count else new_state)
 	Global.find_parent_with_func(self, "update_state", [state_idx])
+	if get_parent().get_node("Date"):
+		DB._update_record(DB.Tables.TASKS, ["date"], [DB.DB_date()], get_parent().get_node("Title").idx)
+		get_parent().get_node("Date").set_text(DB.DB_date().replace('"', ""))

@@ -9,6 +9,11 @@ func _ready() -> void: connection_user_db()
 # Получение имени объекта из перечисления
 func enum_key(enums: Dictionary, obj: int) -> String: return enums.keys()[obj].to_lower()
 
+# Получение даты для добавления в базу данных
+func DB_date() -> String:
+	print(Time.get_datetime_string_from_system(true, true).split(" ")[0])
+	return '"'+Time.get_datetime_string_from_system(true, true).split(" ")[0]+'"'
+
 # Открытие базы данных
 func _open_db(db_name: String = "users") -> void:
 	db = SQLite.new()
@@ -78,6 +83,7 @@ func _update(table: Variant, columns: Array, values: Array, where: String = "") 
 	if where: where = " WHERE " + where
 	for i in range([len(columns), len(values)].min()):
 		v.append(columns[i] + " = " + str(values[i]))
+	print("UPDATE `" + _get_table_name(table) + "` SET " + ",".join(v) + where + ";")
 	db.query("UPDATE `" + _get_table_name(table) + "` SET " + ",".join(v) + where + ";")
 
 # По индексу
@@ -194,6 +200,10 @@ func match_select(table: Tables, filter: Dictionary) -> Array:
 # Распределение обработки действий с объектами
 func match_actions(action_type: ActionTypes, obj_type: Global.Pages, idx: String, values: Array = []) -> void:
 	match action_type:
-		ActionTypes.INSERT: _insert_witn_columns(obj_type as Tables, values)
-		ActionTypes.UPDATE: update_with_columns(obj_type as Tables, idx, values)
+		ActionTypes.INSERT:
+			if obj_type != Global.Pages.TASKS: _insert_witn_columns(obj_type as Tables, values)
+			else: _insert_witn_columns(obj_type as Tables, values + [DB_date()])
+		ActionTypes.UPDATE:
+			if obj_type != Global.Pages.TASKS: update_with_columns(obj_type as Tables, idx, values)
+			else:  update_with_columns(obj_type as Tables, idx, values + [DB_date()])
 		ActionTypes.DELETE: call("_delete_"+DB.enum_key(Global.Pages, obj_type), int(idx))

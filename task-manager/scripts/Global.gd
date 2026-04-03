@@ -78,6 +78,9 @@ func text_changed_TextEdit(container: TextEdit, is_numeric: bool = false) -> voi
 		container.set_text(container.get_text().replace("\t", "").replace("\n", ""))
 		if container.find_next_valid_focus(): container.find_next_valid_focus().grab_focus()
 
+# Получение индекса выбранного элемента выпадающего списка
+func get_OB_id(button: OptionButton) -> int: return button.get_item_id(button.selected)
+
 # Получение текстового значения элемента выпадающего списка
 func get_OB_text(button: OptionButton) -> String: return button.get_item_text(button.selected)
 
