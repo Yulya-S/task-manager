@@ -14,3 +14,4 @@ func _start_func() -> void:
 	if get_parent().get("idx") == 0 or get_parent().get_node("Title").get("idx") == 0: return
 	var new_state: int = state_idx + 1
 	set_obj(0 if new_state >= states_count else new_state)
+	Global.find_parent_with_func(self, "update_state", [state_idx])

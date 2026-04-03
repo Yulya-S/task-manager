@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://bei37qun26won"]
+
+[ext_resource type="Script" uid="uid://b11021c4eirc7" path="res://scripts/fragments/ListElement.gd" id="1_brn1i"]
+[ext_resource type="Script" uid="uid://b731i6tbqj5mx" path="res://scripts/fragments/interactive_label.gd" id="1_o0dh0"]
+[ext_resource type="Script" uid="uid://d08iv5d5r718o" path="res://scripts/fragments/state_label.gd" id="3_6ugun"]
+
+[node name="Project" type="ColorRect"]
+custom_minimum_size = Vector2(1152, 23)
+offset_right = 969.0
+offset_bottom = 23.0
+mouse_filter = 1
+color = Color(0.955963, 0.955963, 0.955963, 1)
+script = ExtResource("1_brn1i")
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 1
+offset_left = 10.0
+offset_right = 425.0
+offset_bottom = 23.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+text = "Название проекта"
+vertical_alignment = 1
+autowrap_mode = 1
+script = ExtResource("1_o0dh0")
+next_page = 6
+next_page_dir = 1
+
+[node name="Completed" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -687.0
+offset_right = -517.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+text = "Выполненные"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Canceled" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_right = -342.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+text = "Отклоненные"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -337.0
+offset_right = -167.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+text = "Оставшиеся"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="StateLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -162.0
+offset_right = -12.0
+offset_bottom = 23.0
+grow_horizontal = 0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/outline_size = 8
+text = "Статус"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+script = ExtResource("3_6ugun")
+states_count = 2
+
+[connection signal="mouse_entered" from="Title" to="Title" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Title" to="Title" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="StateLabel" to="StateLabel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StateLabel" to="StateLabel" method="_on_mouse_exited"]

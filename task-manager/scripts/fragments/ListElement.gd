@@ -35,3 +35,8 @@ func set_values(data: Dictionary) -> void:
 		_: $StateLabel.set_obj(data.state)
 	File.set_lang(self)
 	_set_line_size()
+
+# Изменение состояния объекта
+func update_state(new_state: int) -> void:
+	DB.update_state(scene_file_path.split("/")[-1].split(".")[0]+"s", $Title.idx, new_state)
+	Global.find_parent_with_func(self, "set_progress_bars")

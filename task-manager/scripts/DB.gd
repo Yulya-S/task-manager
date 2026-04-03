@@ -90,6 +90,9 @@ func _update_record(table: Variant, columns: Array, values: Array,
 func update_with_columns(table: Variant, idx: Variant, values: Array, other: String = "") -> void:
 	_update_record(table, _get_columns(table), values, idx, other)
 
+# Изменить состояние объекта
+func update_state(table: Variant, idx: int, new_state: int) -> void: _update_record(table, ["state"], [new_state], idx)
+
 # Удаление записей
 # Основной запрос
 func _delete(table: Variant, where: String = "") -> void:

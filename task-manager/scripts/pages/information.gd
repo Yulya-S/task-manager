@@ -27,10 +27,14 @@ func set_progress_bars() -> void:
 		i.max_value = sum
 		i.value = data[i.name.to_lower()]
 
+# Изменение состояния объекта
+func update_state(new_state: int) -> void: DB.update_state(DB.Tables.PROJECTS, idx, new_state)
+
 # Назад
 func _on_back_button_down() -> void:
 	Global.delete_child(get_parent(), self)
 	idx = 0
+	Global.emit_signal("update_page")
 
 # Изменить
 func _on_update_button_down() -> void: Global.open_window(Global.Pages.PROJECTS, idx)

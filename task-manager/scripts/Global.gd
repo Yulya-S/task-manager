@@ -112,3 +112,11 @@ func set_color_and_lang(obj: Variant) -> void:
 # Проверка наличия ключа в данных и применение при наличии
 func set_label_from_data(obj: Label, data: Dictionary) -> void:
 	if obj.name.to_lower() in data.keys(): obj.set_text(str(data[obj.name.to_lower()]))
+
+# Запуск поиска родителя с требуемой функцией
+func find_parent_with_func(obj: Node, func_name: String, values: Array = []) -> void:
+	while obj.name != "Main":
+		if obj.get(func_name):
+			obj.callv(func_name, values)
+			break
+		obj = obj.get_parent()
