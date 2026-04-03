@@ -173,6 +173,8 @@ func _standard_language() -> Dictionary: return {
 	"Apply": "Сохранить", "Close": "Отменить изменения", "Delete": "Удалить",
 	# Окно создания проекта
 	"CommentLabel": "Комментарий", "ProjectWindowTitleLabel": "Название проекта:",
+	
+	"TasksFilterOrder": ["По количеству активных задач"],
 	# Страница проектов
 	"__ST1": "В процессе", "__ST2": "Завершено", "__ST3": "Отменено",
 	# Окно подтверждения
@@ -222,6 +224,8 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	"Apply": "Save", "Close": "Cancel changes", "Delete": "Delete",
 	# Окно создания проекта
 	"CommentLabel": "Comment", "ProjectWindowTitleLabel": "Project Title:",
+	
+	"TasksFilterOrder": ["По количеству активных задач"],
 	# Страница проектов
 	"__ST1": "In progress", "__ST2": "Completed", "__ST3": "Canceled",
 	# Окно подтверждения

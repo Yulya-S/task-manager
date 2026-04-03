@@ -17,11 +17,11 @@ func set_filter(obj: Variant, value: int) -> void: obj.selected = value
 
 # Заполнение выпадающего списка в фильтре
 func set_OB_items(table: DB.Tables) -> void:
-	var node_name: String = Global.enum_key(DB.Tables, table)
+	var node_name: String = DB.enum_key(DB.Tables, table)
 	var node: OptionButton = get_node(node_name[0].to_upper() + node_name.substr(1, len(node_name)-2))
 	node.clear()
 	node.add_item("", 0)
-	File.fill_optionButton(node, DB.select_all(table), false)
+	Global.fill_optionButton(node, DB.select_all(table), false)
 
 # Изменение значения фильтра
 func _update_value(obj: Variant, value_name: String, sep: String) -> void:
@@ -63,6 +63,7 @@ func _get_keys(obj: Variant) -> Array: return OB_items[obj.name].keys()
 func reset_OB() -> void:
 	for i in OB_objects.keys():
 		for l in range(get_node(NodePath(i)).get_item_count()):
+			if len(OB_objects[i]) == 1: continue
 			get_node(NodePath(i)).set_item_text(l, OB_objects[i][l])
 
 # Обработки нажатия кнопок

@@ -6,8 +6,8 @@ class_name Page
 
 # Подключение сигнала
 func _ready() -> void:
-	if Global.current_page > Global.Pages.PROJECTS: Filter.set_OB_items(Global.Pages.PROJECTS)
-	if Global.current_page == Global.Pages.TASKS: Filter.set_OB_items(Global.Pages.SECTIONS)
+	if Global.current_page > Global.Pages.PROJECTS: Filter.set_OB_items(DB.Tables.PROJECTS)
+	if Global.current_page == Global.Pages.TASKS: Filter.set_OB_items(DB.Tables.SECTIONS)
 	Global.connect("update_page", Callable(self, "_update_page"))
 	_update_page()
 

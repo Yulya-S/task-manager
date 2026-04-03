@@ -11,7 +11,6 @@ func enum_key(enums: Dictionary, obj: int) -> String: return enums.keys()[obj].t
 
 # Получение даты для добавления в базу данных
 func DB_date() -> String:
-	print(Time.get_datetime_string_from_system(true, true).split(" ")[0])
 	return '"'+Time.get_datetime_string_from_system(true, true).split(" ")[0]+'"'
 
 # Открытие базы данных
@@ -67,8 +66,6 @@ func _get_columns(table: Variant) -> Array:
 # Создание записей
 # Основной запрос
 func _insert(table: Variant, columns: String, values: Array) -> void:
-	print("INSERT INTO `" + _get_table_name(table) + "` (" + columns +
-		") VALUES (" + ", ".join(values) + ");")
 	db.query("INSERT INTO `" + _get_table_name(table) + "` (" + columns +
 		") VALUES (" + ", ".join(values) + ");")
 
@@ -83,7 +80,6 @@ func _update(table: Variant, columns: Array, values: Array, where: String = "") 
 	if where: where = " WHERE " + where
 	for i in range([len(columns), len(values)].min()):
 		v.append(columns[i] + " = " + str(values[i]))
-	print("UPDATE `" + _get_table_name(table) + "` SET " + ",".join(v) + where + ";")
 	db.query("UPDATE `" + _get_table_name(table) + "` SET " + ",".join(v) + where + ";")
 
 # По индексу
