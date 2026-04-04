@@ -24,7 +24,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
 text = "Название проекта"
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 script = ExtResource("1_o0dh0")
 next_page = 6
 next_page_dir = 1
@@ -43,7 +43,7 @@ theme_override_constants/line_spacing = -5
 text = "Выполненные"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="Canceled" type="Label" parent="."]
 layout_mode = 1
@@ -59,7 +59,7 @@ theme_override_constants/line_spacing = -5
 text = "Отклоненные"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="Count" type="Label" parent="."]
 layout_mode = 1
@@ -75,7 +75,7 @@ theme_override_constants/line_spacing = -5
 text = "Оставшиеся"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="StateLabel" type="Label" parent="."]
 layout_mode = 1
@@ -95,7 +95,7 @@ theme_override_constants/outline_size = 8
 text = "Статус"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 script = ExtResource("3_6ugun")
 states_count = 2
 

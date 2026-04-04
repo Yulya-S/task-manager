@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://s1tvmxbv4hvn" path="res://scripts/pages/window_page.gd" id="1_70td0"]
 [ext_resource type="PackedScene" uid="uid://dkqydyohdj55s" path="res://scenes/windows/window.tscn" id="2_nmpp4"]
 
-[node name="TaskWindow" type="Control"]
+[node name="Task" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0

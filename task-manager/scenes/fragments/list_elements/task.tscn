@@ -24,7 +24,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
 text = "Текст задачи"
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 script = ExtResource("2_5i6ai")
 next_page_dir = 1
 
@@ -42,7 +42,7 @@ theme_override_constants/line_spacing = -5
 text = "Действие"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="Project" type="Label" parent="."]
 layout_mode = 1
@@ -58,7 +58,7 @@ theme_override_constants/line_spacing = -5
 text = "Проект"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="Date" type="Label" parent="."]
 layout_mode = 1
@@ -74,7 +74,7 @@ theme_override_constants/line_spacing = -5
 text = "Дата завершения"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="StateLabel" type="Label" parent="."]
 layout_mode = 1
@@ -94,7 +94,7 @@ theme_override_constants/outline_size = 8
 text = "Статус"
 horizontal_alignment = 2
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 script = ExtResource("3_5i6ai")
 
 [connection signal="mouse_entered" from="Title" to="Title" method="_on_mouse_entered"]

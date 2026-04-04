@@ -10,4 +10,4 @@ func _notification(what: int) -> void:
 		DB.db = null
 
 # Проверка закрытия окна информации при удалении объекта
-func close_inf_page() -> void: if get_child(-1).name == "ProjectWindow": get_child(-2)._on_back_button_down()
+func close_inf_page() -> void: if get_child(-1).name == "Project": get_child(-2)._on_back_button_down()
