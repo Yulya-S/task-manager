@@ -176,14 +176,15 @@ func _standard_language() -> Dictionary: return {
 	# Окна создания / изменения
 	"Apply": "Сохранить", "Close": "Отменить изменения", "Delete": "Удалить",
 	# Окно создания проекта
-	"CommentLabel": "Комментарий", "ProjectWindowTitleLabel": "Название проекта:",
+	"CommentLabel": "Комментарий", "ProjectTitleLabel": "Название проекта:",
 	# Задачи
-	"TasksFilterOrder": ["По дате обновления"], "TaskWindowLabel": "Текст задачи:",
+	"TasksFilterOrder": ["По дате обновления"], "TaskLabel": "Текст задачи:",
 	"TasksMenuAdd": "Создать задачу",
 	# Действия
 	"SectionsFilterOrder": ["По суммарному количеству задач", "По количеству активных задач"],
-	"SectionTitle": "Название действия", "SectionCount": "Количесто активных задач",
+	"SectionTitle": "Текст действия", "SectionCount": "Количесто активных задач",
 	"SectionSum_count": "Суммарное количество задач", "SectionsMenuAdd": "Создать действие",
+	"SectionTitleLabel": "Текст действия:",
 	# Состояния объекта
 	"__ST1": "В процессе", "__ST2": "Завершено", "__ST3": "Отменено",
 	# Окно подтверждения
@@ -232,14 +233,15 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	# Окна создания / изменения
 	"Apply": "Save", "Close": "Cancel changes", "Delete": "Delete",
 	# Окно создания проекта
-	"CommentLabel": "Comment", "ProjectWindowTitleLabel": "Project Title:",
+	"CommentLabel": "Comment", "ProjectTitleLabel": "Project Title:",
 	# Задачи
-	"TasksFilterOrder": ["By update date"], "TaskWindowLabel": "Problem text:",
+	"TasksFilterOrder": ["By update date"], "TaskLabel": "Problem text:",
 	"TasksMenuAdd": "Create a task",
 	# Действия
 	"SectionsFilterOrder": ["By total number of tasks", "By number of active tasks"],
 	"SectionTitle": "Action name", "SectionCount": "Number of active tasks",
 	"SectionSum_count": "Total number of tasks", "SectionsMenuAdd": "Create an action",
+	"SectionTitleLabel": "Action name:",
 	# Состояния объекта
 	"__ST1": "In progress", "__ST2": "Completed", "__ST3": "Canceled",
 	# Окно подтверждения

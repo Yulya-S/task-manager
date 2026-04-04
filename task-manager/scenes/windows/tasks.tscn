@@ -95,7 +95,7 @@ popup/item_1/id = 1
 popup/item_2/text = "__ST3"
 popup/item_2/id = 2
 
-[node name="State" type="Label" parent="State"]
+[node name="Label" type="Label" parent="State"]
 layout_mode = 0
 offset_left = -370.0
 offset_right = -5.0
