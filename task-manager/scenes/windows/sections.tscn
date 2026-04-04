@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c04r7culrrska"]
+
+[ext_resource type="Script" uid="uid://s1tvmxbv4hvn" path="res://scripts/pages/window_page.gd" id="1_iqu00"]
+[ext_resource type="PackedScene" uid="uid://dkqydyohdj55s" path="res://scenes/windows/window.tscn" id="2_kjb8f"]
+
+[node name="Section" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_iqu00")
+page_type = 3
+
+[node name="Window" parent="." instance=ExtResource("2_kjb8f")]
+layout_mode = 0
+
+[node name="Title" type="TextEdit" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 485.0
+offset_top = 275.0
+offset_right = 906.0
+offset_bottom = 306.0
+autowrap_mode = 1
+scroll_past_end_of_file = true
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -257.0
+offset_right = -5.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Текст действия:"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[connection signal="text_changed" from="Title" to="." method="_on_title_text_changed"]
