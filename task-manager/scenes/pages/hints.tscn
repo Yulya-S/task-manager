@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5bdfno0dhega"]
+
+[ext_resource type="Script" uid="uid://b7qa5iyr75mmu" path="res://scripts/pages/hints.gd" id="1_uohb5"]
+[ext_resource type="Texture2D" uid="uid://bea6mhan0is1p" path="res://img/hints/1.png" id="2_fg8fa"]
+[ext_resource type="Texture2D" uid="uid://7kq0msqerf7o" path="res://img/hints/2.png" id="3_wtnlj"]
+[ext_resource type="Texture2D" uid="uid://b2p574wlnmh1c" path="res://img/hints/3.png" id="4_fn5ja"]
+[ext_resource type="Texture2D" uid="uid://b0yl3b7miye1t" path="res://img/hints/4.png" id="5_bvhhw"]
+[ext_resource type="Texture2D" uid="uid://d3mbx3oxug7wr" path="res://img/hints/5.png" id="6_gh4e1"]
+[ext_resource type="Texture2D" uid="uid://cdaiv35e5th5q" path="res://img/hints/6.png" id="7_fn5ja"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uohb5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fg8fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wtnlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fn5ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bvhhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gh4e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fn5ja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hints" type="ColorRect"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.670588, 0.733333, 0.72549, 1)
+script = ExtResource("1_uohb5")
+
+[node name="Hints" type="Label" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 10.0
+offset_right = 1062.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.5187, 0.57, 0.564015, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Инструкция"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1092.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 52.0
+tooltip_text = "Отменить изменения"
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1092.0
+offset_top = 596.0
+offset_right = 1142.0
+offset_bottom = 638.0
+tooltip_text = "Отменить изменения"
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 24
+text = ">"
+
+[node name="Last" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 596.0
+offset_right = 60.0
+offset_bottom = 638.0
+tooltip_text = "Отменить изменения"
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 24
+text = "<"
+
+[node name="Border" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 62.0
+offset_right = 917.0
+offset_bottom = 456.0
+color = Color(0.329412, 0.352941, 0.34902, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(568, 259)
+scale = Vector2(0.602161, 0.602161)
+sprite_frames = SubResource("SpriteFrames_uohb5")
+frame = 5
+
+[node name="Marker" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 126.0
+offset_right = 911.0
+offset_bottom = 156.0
+color = Color(0.57, 0, 0, 0.486275)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 470.0
+offset_right = 1142.0
+offset_bottom = 591.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "__H1"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Idx" type="Label" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 606.0
+offset_right = 568.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 2
+text_overrun_behavior = 3
+
+[node name="Label" type="Label" parent="Idx"]
+layout_mode = 0
+offset_left = 508.0
+offset_right = 520.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "/"
+
+[node name="Count" type="Label" parent="Idx"]
+layout_mode = 0
+offset_left = 520.0
+offset_right = 1032.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0"
+text_overrun_behavior = 3
+
+[connection signal="button_down" from="Close" to="." method="_on_close_button_down"]
+[connection signal="button_down" from="Next" to="." method="_on_next_button_down"]
+[connection signal="button_down" from="Last" to="." method="_on_last_button_down"]

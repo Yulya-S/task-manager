@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgrd3vw0y0k0y"]
+[gd_scene load_steps=8 format=3 uid="uid://cgrd3vw0y0k0y"]
 
 [ext_resource type="Script" uid="uid://trtejhanq037" path="res://scripts/fragments/head.gd" id="1_24wiy"]
 [ext_resource type="Texture2D" uid="uid://da2cwsefve03e" path="res://img/icons/question.png" id="1_jl5ir"]
 [ext_resource type="Texture2D" uid="uid://0hvkli6bh0xe" path="res://img/icons/gear.png" id="2_fjqy4"]
 [ext_resource type="Texture2D" uid="uid://dtg03hwa0gg3h" path="res://img/icons/report.png" id="3_24wiy"]
 [ext_resource type="Texture2D" uid="uid://cmr8t4ni0no18" path="res://img/icons/section.png" id="4_b0yl4"]
+[ext_resource type="Texture2D" uid="uid://bsf3jvjt7cni" path="res://img/icons/lamp.png" id="4_mgesx"]
 [ext_resource type="Texture2D" uid="uid://42n7xbftv3od" path="res://img/icons/door.png" id="5_fjqy4"]
 
 [node name="Head" type="ColorRect"]
@@ -49,7 +50,7 @@ offset_right = 223.0
 offset_bottom = 133.0
 scale = Vector2(0.31, 0.31)
 tooltip_text = "Проекты"
-icon = ExtResource("3_24wiy")
+icon = ExtResource("4_mgesx")
 
 [node name="Sections" type="Button" parent="."]
 layout_mode = 0

@@ -193,7 +193,43 @@ func _standard_language() -> Dictionary: return {
 	# Общие фрагменты для фильтра сортировки (По id, по алфавиту)
 	"__FO1": "По дате добавления", "__FO2": "По алфавиту",
 	# Подсказки
-	"_Hints": [],
+	# Подсказки
+	"_Hints": [
+		'При выборе языка в соответствующем выпадающем списке, язык текста приложения будет изменен.\nВажно: в случае не полного перевода текст будет автоматически дополнен Русским переводом (создается по умолчанию)',
+		"Для начала использования приложения необходимо создать аккаунт пользователя, для этого заполните поля логина (будет отображено в верхней части приложения) и пароля",
+		'После чего нажмите кнопку "Регистрация", если пользователь существует, то при нажатии кнопки "Вход" будет совершен вход в его аккаунт.\nВажно: Имя пользователя должно быть уникальным!',
+		'При установке галочки у параметра "Показать пароль" текст в поле пароля станет видимым',
+		'При установке галочки у параметра "Запомни меня" следующий вход в аккаунт пользователя будет совершен автоматически',
+		# Задачи
+		"После входа в аккаунт пользователя появится страница задач, на которой отображается информация о всех активных и завершенных задачах",
+		'При нажатии на знак "+" будет открыто окно создания новой задачи.\nВажно: Для создания задачи требуется по крайней мере один проект и одно действие',
+		"При нажатии на текст задачи будет открыто окно изменения выбранной задачи",
+		'Если нажать на текст текущего состояния задачи будет сменен статус задачи в циклическом порядке: "В процессе", "Завершено", "Отменено"',
+		'Для перехода в меню настроек приложения нужно нажать на кнопку "Настройки" в верхней части приложения',
+		# Настройки
+		"Изменения, внесенные на странице настроек, имеют только косметический характер и затрагивают только внешний вид приложения у текущего пользователя",
+		"На выбор существуют 9 предустановленных цветовых тем, каждая из них отличается в зависимости от выбора между светлой и темной темой",
+		"Кроме того пользователь может создать свою собственную цветовую тему при переключении режима предустановленной и пользовательской темы",
+		"В пользовательской теме можно настроить количество используемых цветов (от 1 до 4).\nВажно: При выборе темной темы в пользовательской палитре, яркость и контраст выбранных цветов настраивается вручную",
+		"Все изменения цветовой палитры будут отображаться в примере внешнего вида приложения.\nВажно: При смене между светлой и темной темой приложения меняются цветовые настройки текста и всех видов кнопок",
+		'Нажатие кнопки "Удалить" удалит все данные о пользователе безвозвратно, предварительно предложив отменить решение об удалении пользователя',
+		'Изменения в окне настроек будут сохранены только при нажатии кнопки "Сохранить", если закрыть окно нажатием на "Крестик" изменения будут отменены, за исключением выбора языка программы, который применяется без сохранения изменений',
+		# Проекты
+		"При переходе на страницу проектов отображается информация об активных и завершенных проектах, а также статистика о количестве оставшихся, выполненных и отмененных задач",
+		'Если нажать на текст текущего состояния проекта будет сменен статус задачи в циклическом порядке: "В процессе", "Завершено"',
+		"При нажатии на имя проекта в списке будет совершен переход на страницу информации о выбранном проекте",
+		# Информация о проекте
+		"На странице информации приведен список всех задач относящихся в выбранному проекту",
+		"В нижней части страницы отображается шкала выполнения проекта, где с правой стороны шкала отмененных задач, а слева выполненных",
+		'При нажатии на текст текущего состояния проекта будет сменен статус задачи в циклическом порядке: "В процессе", "Завершено"',
+		"Кнопки в верхней части страницы информации позволяют изменять проект, а также создавать задачи в рамках выбранного проекта",
+		'Для закрытия страницы информации нужно нажать на кнопку "Назад" или перейти на одну из страниц в шапке приложения',
+		# Действия
+		"На странице действий отображается список всех созданных действий, а также количество задач в процессе выполнения и суммарное количество задач",
+		"При нажатии на текст действия будет открыто окно изменения выбранного действия",
+		# Выход
+		'Для того, чтобы выйти из аккаунта пользователя нужно нажать на кнопку "Выход".\nВажно: При выходе из аккаунта автоматический вход будет сброшен и авторизацию нужно будет повторить для входа в аккаунт текущего пользователя',
+	],
 	# Ошибки
 	"_Errors": {
 			"_E1": "Обязательные поля должны быть заполнены",
@@ -250,7 +286,42 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	# Общие фрагменты для фильтра сортировки (По id, по алфавиту)
 	"__FO1": "By date added", "__FO2": "Alphabetically",
 	# Подсказки
-	"_Hints": [],
+	"_Hints": [
+		'When you select a language from the corresponding drop-down list, the language of the application text will be changed.\nImportant: if the translation is incomplete, the text will be automatically supplemented with a Russian translation (created by default)',
+		"To start using the application, you need to create a user account. To do this, fill in the login (will be displayed at the top of the application) and password fields",
+		'Then click the "Register" button. If the user exists, then clicking the "Login" button will log you into his account.\nImportant: The username must be unique!',
+		'By checking the "Show password" box, the text in the password field will become visible',
+		'By checking the box next to the "Remember me" option, the next time you log into your user account, it will be done automatically',
+		# Задачи
+		"After logging in to the user's account, the tasks page will appear, displaying a list of all active and completed tasks",
+		'Clicking the "+" sign will open a window for creating a new task.\nImportant: Creating a task requires at least one project and one action',
+		"Clicking the task text will open a window for editing the selected task",
+		'Clicking on the task\'s current status text will cycle through the following: "In Progress", "Completed" and "Canceled"',
+		'To access the app\'s settings menu, click the "Settings" button at the top of the app',
+		# Настройки
+		"Changes made on the Settings page are cosmetic only and affect the app's appearance for the current user",
+		"There are 9 preset color themes to choose from, each with a different color theme depending on whether you choose Light or Dark mode",
+		"In addition, the user can create their own color theme by switching between preset and custom themes",
+		"In the custom theme, you can customize the number of colors used (from 1 to 4).\nImportant: When selecting a dark theme in the custom palette, the brightness and contrast of the selected colors must be adjusted manually",
+		"All color palette changes will be reflected in the sample app appearance.\nImportant: When switching between the light and dark app themes, the color settings for the text and all button types change",
+		'Clicking the "Delete" button will permanently delete all user data, prompting you to cancel the deletion decision',
+		'Changes in the settings window will only be saved when you click the "Save" button. Closing the window by clicking the "X" will discard the changes, with the exception of the program language selection, which is applied without saving the changes',
+		# Проекты
+		"When you go to the projects page, information about active and completed projects is displayed, as well as statistics about the number of remaining, completed, and canceled tasks",
+		'Clicking on the text of the current project status will change the task status in a cyclic order: "In progress", "Completed"',
+		'Clicking on a project name in the list will take you to the information page for the selected project',
+		# Информация о проекте
+		"The information page lists all tasks related to the selected project",
+		"The project progress bar is displayed at the bottom of the page, with canceled tasks on the right and completed tasks on the left",
+		'Clicking on the text of the current project status will change the task status in a cyclic order: "In progress", "Completed"',
+		"The buttons at the top of the information page allow you to edit the project and create tasks within the selected project",
+		'To close the information page, you need to press the "Back" button or go to one of the pages in the application header',
+		# Действия
+		"The Actions page displays a list of all created actions, as well as the number of tasks in progress and the total number of tasks",
+		"Clicking on the action text will open a window for editing the selected action",
+		# Выход
+		'To log out of a user account, click the "Log Out" button.\nImportant: When you log out of an account, automatic login will be reset and you will need to re-authorize to log into the current user\'s account',
+	],
 	# Ошибки
 	"_Errors": {
 			"_E1": "Required fields must be filled in",

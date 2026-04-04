@@ -67,4 +67,4 @@ func _on_enter_button_down(check_field: bool = true, auto: bool = false) -> void
 	_entrance(auto)
 
 # Подсказки
-func _on_hints_button_down() -> void: Global.open_w(Global.Pages.HINTS, null, Global.Dirs.PAGES)
+func _on_hints_button_down() -> void: Global.open_window(Global.Pages.HINTS, null, Global.Dirs.PAGES)

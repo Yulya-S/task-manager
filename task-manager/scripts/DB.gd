@@ -175,6 +175,10 @@ func select_user() -> Dictionary:
 # Настройки
 func select_settings() -> Dictionary: return select_all(Tables.SETTINGS)[0]
 
+# Проверка что созданы хотя бы один проект и одно действие
+func check_obj_count() -> bool:
+	return len(select_all(Tables.PROJECTS)) == 0 or len(select_all(Tables.SECTIONS)) == 0
+
 # Получение сумм количества задачь по проекта
 func fragment_pregress_bar_data() -> String:
 	return "(SELECT COUNT(t.id) FROM tasks t WHERE t.project_id = p.id AND state = 1) completed,

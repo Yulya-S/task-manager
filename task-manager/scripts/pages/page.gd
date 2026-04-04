@@ -26,4 +26,7 @@ func update_data(obj: Variant = self) -> void:
 	for i in obj.get_children(): update_data(i)
 
 # Нажатие кнопки создания объекта
-func _on_add_button_down() -> void: Global.open_window(Global.Pages.get(name.to_upper()))
+func _on_add_button_down() -> void:
+	if Global.Pages.get(name.to_upper()) == Global.Pages.TASKS and DB.check_obj_count():
+		return
+	Global.open_window(Global.Pages.get(name.to_upper()))
