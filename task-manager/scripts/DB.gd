@@ -188,6 +188,10 @@ func check_obj(table: Tables, title: String, idx: int) -> bool:
 func match_select(table: Tables, filter: Dictionary) -> Array:
 	match table:
 		Tables.PROJECTS: return select("p.*, " + fragment_pregress_bar_data(), filter.where, filter.order)
+		Tables.SECTIONS:
+			return select("s.*, COALESCE((SELECT COUNT(t.id) FROM tasks t WHERE t.section_id = s.id), 0) sum_count,
+				COALESCE((SELECT COUNT(t.id) FROM tasks t WHERE t.section_id = s.id AND t.state = 0), 0) count
+				FROM sections s", filter.where, filter.order)
 		Tables.TASKS:
 			return select("t.*, p.title AS project, s.title AS section FROM tasks t LEFT JOIN projects p ON p.id = t.project_id
 				LEFT JOIN sections s ON s.id = t.section_id", filter.where, filter.order)

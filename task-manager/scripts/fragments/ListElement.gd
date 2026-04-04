@@ -31,8 +31,8 @@ func set_values(data: Dictionary) -> void:
 			if _name_id(i) in data.keys():
 				if data[_name_id(i)]: i.set_object(data[i.name.to_lower()],  data[_name_id(i)])
 				elif data[i.name.to_lower()] == null: i.set_text("-")
-	match scene_file_path.split("/")[-1].replace(".tscn", ""):
-		_: $StateLabel.set_obj(data.state)
+	if scene_file_path.split("/")[-1].replace(".tscn", "") != "section":
+		$StateLabel.set_obj(data.state)
 	File.set_lang(self)
 	_set_line_size()
 

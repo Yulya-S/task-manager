@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://1v8uf5gfeq01"]
+
+[ext_resource type="Script" uid="uid://bep2n4p1rm01" path="res://scripts/pages/page.gd" id="1_qdwjp"]
+[ext_resource type="PackedScene" uid="uid://cgrd3vw0y0k0y" path="res://scenes/fragments/head.tscn" id="2_e1r27"]
+[ext_resource type="Texture2D" uid="uid://d1yvp7nvkgtp7" path="res://img/icons/plus.png" id="3_82u3a"]
+[ext_resource type="Script" uid="uid://bkop7jq6u4e54" path="res://scripts/fragments/filter.gd" id="4_1snkv"]
+[ext_resource type="PackedScene" uid="uid://bv8to47k7nnk4" path="res://scenes/fragments/obj_array.tscn" id="5_c21ho"]
+
+[node name="Sections" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qdwjp")
+
+[node name="Head" parent="." instance=ExtResource("2_e1r27")]
+layout_mode = 0
+
+[node name="Menu" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 1152.0
+offset_bottom = 100.0
+color = Color(0.376471, 0.72549, 0.698039, 1)
+
+[node name="Add" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 148.0
+offset_bottom = 133.0
+scale = Vector2(0.31, 0.31)
+tooltip_text = "Создать проект"
+icon = ExtResource("3_82u3a")
+
+[node name="Filter" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 65)
+layout_mode = 0
+offset_top = 100.0
+offset_right = 1152.0
+offset_bottom = 165.0
+color = Color(0.627451, 0.913725, 0.894118, 1)
+script = ExtResource("4_1snkv")
+OB_items = {
+"Order": {
+"0": "s.id",
+"1": "s.title",
+"2": "sum_count",
+"3": "count DESC",
+"filter": "order"
+}
+}
+title_pref = "s."
+
+[node name="Title" type="TextEdit" parent="Filter"]
+clip_contents = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 383.0
+offset_bottom = 55.0
+autowrap_mode = 1
+scroll_past_end_of_file = true
+
+[node name="Label" type="Label" parent="Filter/Title"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -24.0
+offset_right = 262.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Фрагмент названия"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Order" type="OptionButton" parent="Filter"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 24.0
+offset_right = 760.0
+offset_bottom = 55.0
+alignment = 1
+text_overrun_behavior = 3
+clip_text = true
+selected = 0
+item_count = 4
+popup/item_0/text = "__FO1"
+popup/item_0/id = 0
+popup/item_1/text = "__FO2"
+popup/item_1/id = 1
+popup/item_2/text = "По суммарному количеству задч"
+popup/item_2/id = 2
+popup/item_3/text = "По количеству активных задач"
+popup/item_3/id = 3
+
+[node name="Label" type="Label" parent="Filter/Order"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -24.0
+offset_right = 262.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Порядок сортировки"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Button" type="Button" parent="Filter"]
+layout_mode = 0
+offset_left = 769.0
+offset_top = 24.0
+offset_right = 1137.0
+offset_bottom = 55.0
+text = "Применить"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="ObjArray" parent="." instance=ExtResource("5_c21ho")]
+layout_mode = 0
+offset_top = 170.0
+offset_right = 1152.0
+offset_bottom = 643.0
+obj = 3
+
+[connection signal="button_down" from="Menu/Add" to="." method="_on_add_button_down"]
+[connection signal="text_changed" from="Filter/Title" to="Filter" method="_on_title_text_changed"]
+[connection signal="button_down" from="Filter/Button" to="Filter" method="_on_button_button_down"]
