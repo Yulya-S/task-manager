@@ -30,7 +30,7 @@ offset_top = 5.0
 offset_right = 148.0
 offset_bottom = 133.0
 scale = Vector2(0.31, 0.31)
-tooltip_text = "Создать проект"
+tooltip_text = "Создать действие"
 icon = ExtResource("3_82u3a")
 
 [node name="Filter" type="ColorRect" parent="."]
@@ -88,7 +88,7 @@ popup/item_0/text = "__FO1"
 popup/item_0/id = 0
 popup/item_1/text = "__FO2"
 popup/item_1/id = 1
-popup/item_2/text = "По суммарному количеству задч"
+popup/item_2/text = "По суммарному количеству задач"
 popup/item_2/id = 2
 popup/item_3/text = "По количеству активных задач"
 popup/item_3/id = 3

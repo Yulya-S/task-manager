@@ -98,7 +98,9 @@ func _find_lang_keys(obj: Variant, key: String = "") -> String:
 # Изменение текста объекта в зависимости от типа объекта
 func _lang_match(obj: Variant, key: String) -> void:
 	match obj.get_class():
-		"CheckButton": obj.set_text(lang[key])
+		"CheckButton":
+			if lang[key] is Array: set_CB(obj)
+			else: obj.set_text(lang[key])
 		"ColorPickerButton": obj.get_child(0).set_text(lang[key]+" "+obj.name.split("_")[1])
 		"Label", "CheckBox":
 			if obj.text != "" and "-" not in obj.text and not Global.text_is_number(obj.text):
@@ -178,6 +180,10 @@ func _standard_language() -> Dictionary: return {
 	# Задачи
 	"TasksFilterOrder": ["По дате обновления"], "TaskWindowLabel": "Текст задачи:",
 	"TasksMenuAdd": "Создать задачу",
+	# Действия
+	"SectionsFilterOrder": ["По суммарному количеству задач", "По количеству активных задач"],
+	"SectionTitle": "Название действия", "SectionCount": "Количесто активных задач",
+	"SectionSum_count": "Суммарное количество задач", "SectionsMenuAdd": "Создать действие",
 	# Состояния объекта
 	"__ST1": "В процессе", "__ST2": "Завершено", "__ST3": "Отменено",
 	# Окно подтверждения
@@ -230,6 +236,10 @@ func _cr_en() -> void: _cr_lang_file("en", {
 	# Задачи
 	"TasksFilterOrder": ["By update date"], "TaskWindowLabel": "Problem text:",
 	"TasksMenuAdd": "Create a task",
+	# Действия
+	"SectionsFilterOrder": ["By total number of tasks", "By number of active tasks"],
+	"SectionTitle": "Action name", "SectionCount": "Number of active tasks",
+	"SectionSum_count": "Total number of tasks", "SectionsMenuAdd": "Create an action",
 	# Состояния объекта
 	"__ST1": "In progress", "__ST2": "Completed", "__ST3": "Canceled",
 	# Окно подтверждения
