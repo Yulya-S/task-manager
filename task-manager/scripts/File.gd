@@ -67,10 +67,6 @@ func load_lang(container: OptionButton) -> void:
 
 # Создание файлов языков
 func _create_langs() -> void:
-	# Убрать позже - нужно для автоматического обновления перевода
-	DirAccess.remove_absolute(lang_base_path+"ru.json")
-	DirAccess.remove_absolute(lang_base_path+"en.json")
-	
 	_cr_ru()
 	_cr_en()
 
