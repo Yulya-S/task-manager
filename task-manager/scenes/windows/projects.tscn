@@ -9,6 +9,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_1u7qr")
+page_type = null
 
 [node name="Window" parent="." instance=ExtResource("2_lnpay")]
 layout_mode = 0
@@ -75,4 +76,4 @@ scroll_past_end_of_file = true
 
 [connection signal="text_changed" from="Title" to="." method="_on_title_text_changed"]
 [connection signal="toggled" from="State" to="." method="_on_completed_toggled"]
-[connection signal="text_changed" from="Comment" to="." method="_on_title_text_changed"]
+[connection signal="text_changed" from="Comment" to="." method="_on_comment_text_changed"]

@@ -1,7 +1,9 @@
 extends Node
-var db: SQLite = null # Подключенная база данных
+# Перечисления
 enum Tables {USERS, SETTINGS, PROJECTS, SECTIONS, TASKS, SQLITE_SEQUENCE, TEMP_TABLE} # Таблицы в базе данных
 enum ActionTypes {INSERT, UPDATE, DELETE} # Виды действий с объектами
+# Переменная
+var db: SQLite = null # Подключенная база данных
 
 # Стартовый запуск БД
 func _ready() -> void: connection_user_db()

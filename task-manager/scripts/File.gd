@@ -1,4 +1,5 @@
 extends Node
+# Переменные
 var user_base_path: String = "user://bases/" # Директория хранения баз данных
 var lang_base_path: String = user_base_path + "language/" # Директория хранения переводов
 var conf_file_path: String = user_base_path + "conf.json" # Путь к файлу конфигураций

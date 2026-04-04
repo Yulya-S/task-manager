@@ -4,7 +4,7 @@ extends ScrollContainer
 # Экспортируемые переменные
 @export var obj: DB.Tables = DB.Tables.TASKS # Выбранный объект списка
 @export var first_line: bool = true # Будет ли создан заголовок списка
-# Переменная объекта для создания строк списка
+# Переменные
 var lines: Array = [] # Список для создания
 var path: Resource = null # Путь к сцене объекта для создания
 

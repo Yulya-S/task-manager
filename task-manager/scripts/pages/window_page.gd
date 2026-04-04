@@ -1,7 +1,9 @@
 extends Control
 class_name Windows
-# Подключение пути к объекту в сцене
+# Подключение путей к объектам в сцене
 @onready var Error = get_child(0).get_child(2)
+@onready var Title = $Title
+@onready var Project = get_node_or_null("Project_id")
 # Экспортируемая переменная
 @export var page_type: Global.Pages = Global.Pages.PROJECTS # Тип создаваемого / Изменяемого объекта
 # Переменная
@@ -11,13 +13,11 @@ var idx: int = 0 # Индекс изменяемого объекта
 func _ready() -> void:
 	Global.set_color_and_lang(self)
 	if page_type == Global.Pages.TASKS:
-		Global.fill_optionButton($Project_id, DB.select("* FROM projects"))
+		Global.fill_optionButton(Project, DB.select("* FROM projects"))
 		Global.fill_optionButton($Section_id, DB.select("* FROM sections"))
 
 # Обновление данных на сранице с родительской страницы
-func set_from_page(obj_idx: int) -> void:
-	pass
-	#_on_section_id_item_selected(obj_idx)
+func set_from_page(obj_idx: int) -> void: Project.selected = obj_idx - 1
 
 # Обновление данных на странице
 func set_page(new_idx: int) -> void:
@@ -42,7 +42,6 @@ func set_page(new_idx: int) -> void:
 					data[i.name.to_lower()] = i.get_item_index(data[i.name.to_lower()])
 				if get(_create_func_name(i)): call(_create_func_name(i), data[i.name.to_lower()])
 				else: i.selected = data[i.name.to_lower()]
-		if i.name == "Date": i.set_date(data[i.name.to_lower()])
 
 # Получение пути к Window
 func _window() -> Node: return get_child(0)
@@ -64,12 +63,17 @@ func get_values() -> Array:
 # Проверка верности заполнения полей
 func check_object() -> bool:
 	Error.clear()
-	if Error.check($Title): return false
+	if Error.check(Title): return false
 	if page_type != Global.Pages.TASKS:
-		if not DB.check_obj(page_type as DB.Tables, $Title.get_text(), idx):
+		if not DB.check_obj(page_type as DB.Tables, Title.get_text(), idx):
 			return Error.set_state(Error.States._E4)
 	return true
 
 # Обработка нажатий кнопок
 # Переключатель
 func _on_completed_toggled(toggled_on: bool) -> void: $State.set_text(File.lang["__ST"+str(int(toggled_on) + 1)])
+
+# # Обработка изменения текста
+func _on_title_text_changed() -> void: Global.text_changed_TextEdit(Title)
+
+func _on_comment_text_changed() -> void: Global.text_changed_TextEdit($Comment)

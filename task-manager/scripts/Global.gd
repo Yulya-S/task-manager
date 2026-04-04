@@ -1,7 +1,7 @@
 extends Node
 # Сигналы
 signal update_page(close_page: String) # Обновление данных на странице
-# Перечисление
+# Перечисления
 enum Dirs {PAGES, WINDOWS} # Директории объектов
 enum Pages {HINTS, SETTINGS, PROJECTS, SECTIONS, TASKS, REGISTRATION, INFORMATION} # Страницы
 enum MouseOver {NORMAL, HOVER}
@@ -36,7 +36,7 @@ func open_new_page(page: Pages) -> void:
 func open_window(page: Pages, id: Variant = null, dir: Dirs = Dirs.WINDOWS, parent: Variant = null) -> void:
 	add_new_child(main_scene, load("res://scenes/"+DB.enum_key(Global.Dirs, dir)+"/"+DB.enum_key(Pages, page)+".tscn"))
 	if dir == Dirs.WINDOWS and id:
-		if parent != null: main_scene.get_child(-1).set_from_page(id, parent)
+		if parent != null: main_scene.get_child(-1).set_from_page(id)
 		else: main_scene.get_child(-1).set_page(id)
 
 # Получение родителя определенного уровня
