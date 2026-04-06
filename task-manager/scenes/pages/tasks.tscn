@@ -43,7 +43,7 @@ color = Color(0.627451, 0.913725, 0.894118, 1)
 script = ExtResource("4_hwag8")
 OB_items = {
 "Order": {
-"0": "t.id",
+"0": "t.id DESC",
 "1": "t.title",
 "2": "t.date",
 "filter": "order"

@@ -10,7 +10,7 @@ func set_page(new_idx: int) -> void:
 	update_data()
 
 # Получение данных фильтра
-func _get_filter() -> Array: return [{"where": "p.id="+str(idx)}]
+func _get_filter() -> Array: return [{"where": "p.id="+str(idx), "order": "id DESC"}]
 
 # Обновление данных
 func update_data(obj: Variant = self) -> void:
