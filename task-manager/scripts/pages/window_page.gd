@@ -56,7 +56,7 @@ func get_values() -> Array:
 		match i.get_class():
 			"CheckButton": values.append(str(i.button_pressed))
 			"OptionButton": values.append(str(Global.get_OB_id(i)))
-			"TextEdit": values.append('"'+i.get_text()+'"')
+			"TextEdit": values.append('"'+i.get_text().replace('"', '\"')+'"')
 			_: if i.name == "Date": values.append('"'+i.get_date()+'"')
 	return values
 
